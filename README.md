@@ -54,4 +54,4 @@ Preliminary forms of Pseudovote have been used at:
 * Wikimedia Estonia [General Assembly in 2020](https://wikimedia.ee/haaleta-nagu-vikipedist/)
 * Estonian Green Party [General Assembly in 2022](https://www.facebook.com/rohelised/posts/325701606250799)
 
-Initial experiments have resulted in an educational yet fully functional web service demonstrating the process initially conceived at [Uduloor](https://github.com/infoaed/uduloor).
+Initial experiments have resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).
