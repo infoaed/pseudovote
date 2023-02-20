@@ -1,0 +1,224 @@
+{% extends "base.html" -%}
+    {% block static -%}
+    <meta name="author" content="Märt Põder"/>
+    
+    {{ super() -}}
+    <script src="/static/sse.js"></script>
+    <script src="/{{ locale }}/dynamic/index.js"></script>
+    {% endblock static -%}
+
+{% block content -%}
+  <div id="freeze">
+    
+  <form name="create_form" id="create_form" method="post" action="/api/create/">
+  <p>
+    <textarea onChange="messageChange()" name="voters" id="voters" rows="10" cols="50" placeholder="{{ _("voter@gmail.com
+voter@archive.org
+voter@protonmail.com
+
+(Or just drag and drop list of voter e-mails here.)")|replace("\n", "&#10;")|safe }}"></textarea>
+  </p>
+
+  <p class="main">
+    <input type="checkbox" checked id="generic_bulletin" name="generic_bulletin" value="checked" onChange="votingState()"><label for="generic_bulletin">{{ _("Generic poll/election") }}</label>
+  </p>
+
+
+  <fieldset id="voting" name="voting" style="display: none;">
+    <legend>{{ _("Choices, timing and location") }}</legend>
+
+    <p>
+    <input type="text" class="fullwidth" name="bulletin_title" id="bulletin_title" onChange="titleChange()" size="50" value="{{ _("Example poll") }}"/><br/>
+    </p>
+
+    <p>
+    <textarea name="choices" id="choices" rows="4">{{ candidates|join("\r\n") }}</textarea>
+    </p>
+
+    <p>
+      <input type="button" value="▼ JSON" name="json_editor" id="json_editor"> <input type="button" value="{{ _("Refresh") }}" name="uuenda" id="uuenda" disabled> <input type="button" value="{{ _("Append") }}" name="append_to_json" id="append_to_json" disabled>
+    </p>
+
+    <p>
+    <textarea class="json_choices" name="json_choices" id="json_choices" style="display: none;" rows="15" disabled></textarea>
+    </p>
+
+    <input type="datetime-local" name="start_time" id="start_time" onChange="periodChange()"/>
+    <input type="datetime-local" name="end_time" id="end_time" onChange="periodChange()"/>
+
+    <p>
+    <input type="hidden" name="bulletin_name" id="bulletin_name" value=""/>
+    <input type="hidden" name="bulletin_token" id="bulletin_token" value=""/>
+
+    <input type="text" class="fullwidth" name="bulletin_url" id="bulletin_url" size="50" value="" onChange="nameChange()"/>
+    </p>    
+  
+    <p>
+      <label><input type="radio" name="bulletin_link" value="token" checked onChange="linkChange()"/>{{ _("Token") }}</label>
+      <label><input type="radio" name="bulletin_link" value="name" onChange="linkChange()"/>{{ _("Name") }}</label>
+    </p>
+
+  </fieldset>
+
+  <p class="main">
+    <input type="checkbox" checked id="default_pseudonyms" name="default_pseudonyms" value="checked" onChange="pseudoState()"><label for="default_pseudonyms">{{ _("Default pseudonyms") }}</label>
+  </p>
+
+  <fieldset id="custom_pseudonyms" name="custom_pseudonyms" style="display: none;">
+      <legend>{{ _("Custom voter credentials") }}</legend>
+
+    <p>
+      <label><input type="radio" name="wordlist" value="flowers" onFocus="presetWords()" checked/>{{ _("Flowers") }}</label>
+      <label><input type="radio" name="wordlist" value="islands" onFocus="presetWords()"/>{{ _("Islands") }}</label>
+      <label><input type="radio" name="wordlist" value="animals" onFocus="presetWords()"/>{{ _("Emojis") }}</label>
+      <label><input type="radio" name="wordlist" value="starwars" onFocus="presetWords()"/>{{ _("Star Wars") }}</label>
+    </p>
+    <p>
+      <input type="radio" name="wordlist" id="custom_words" value="other" hidden/>
+      <label onChange="customWords()">
+        <textarea name="words" id="custom_text" onFocus="customWords()">{{ _("ballard
+barnaby
+brennan
+cadfael
+chase
+clouseau
+columbo
+conway
+cooper
+dalgliesh
+dinkley
+drew
+dupin
+ellacott
+falco
+fletcher
+gently
+gideon
+hattori
+holmes
+jaspersen
+kakababu
+lestrade
+lupin
+magnum
+maigret
+marlowe
+marple
+mars
+mason
+millhone
+monk
+morse
+mulder
+peabody
+petrovich
+plum
+poirot
+ramotswe
+rebus
+salander
+scully
+spade
+tennison
+tracy
+warshawski
+watson
+wolfe") }}</textarea>
+      </label>
+    </p>
+    <div>
+      <label class="align-left" style="margin-right: 7px;"><input type="radio" name="pseudonym_type" value="pseudonyms" checked/>{{ _("Simple pseudonyms") }}</label>
+      <p>
+        <label><input type="radio" name="pseudonym_type" value="cryptonyms"/>{{ _("With a pinch of salt") }}</label> <input type="number" id="salt_amount" name="salt_amount" min="1" max="16" value="3" disabled>
+      </p>
+
+    </div>
+
+  </fieldset>
+  
+  <p class="main">
+    <input type="checkbox" checked id="trust_voters" name="trust_voters" value="checked" onChange="restrictState()"><label for="trust_voters">{{ _("I have high trust in my voters") }}</label>
+  </p>
+
+  <fieldset id="restrict" name="restrict" style="display: none;">
+    <legend>{{ _("Restrict access to bulletin board") }}</legend>
+
+    <p>
+      <label><input type="checkbox" name="reject_multi" value="checked"/>{{ _("Only allow one ballot per pseudonym") }}</label><br/>
+      <label><input type="checkbox" name="personal_ballot" value="checked"/>{{ _("Provide voter with personal balloting address") }}</label><br/>
+    </p>
+        
+    <p>
+      <label><input type="checkbox" name="limit_choices" value="checked">{{ _("Only allow predefined choices on ballots") }}</label><br/>
+      <label><input type="checkbox" name="reject_invalid" value="checked"/>{{ _("Refuse recording invalid ballots") }}</label><br/>
+    </p>
+
+    <p>
+      <label><input type="checkbox" name="provide_voterlist" value="checked"/>{{ _("Provide bulletin board with a hashed list of voters") }}</label><br/>
+      <label><input type="checkbox" name="mute_unlisted" value="checked" disabled/>{{ _("Deny submitting ballots for unlisted voters") }}</label><br/>
+      <label><input type="checkbox" name="block_unlisted" value="checked" disabled/>{{ _("Deny bulletin board access for unlisted voters") }}</label><br/>
+      <label><input type="checkbox" name="reject_unlisted" value="checked" disabled/>{{ _("Refuse recording ballots from unlisted voters") }}</label><br/>
+    </p>
+
+    <p>
+      <label><input type="checkbox" name="limit_invalid" value="checked"/>{{ _("Limit access on repeated invalid ballots") }}</label><br/>
+      <label><input type="checkbox" name="limit_unlisted" value="checked" disabled/>{{ _("Limit access on repeated unlisted voters") }}</label><br/>
+      <label><input type="checkbox" name="limit_multi" value="checked"/>{{ _("Limit access on repetitive voting patterns") }}</label><br/>
+    </p>
+    
+    <p>
+      <label><input type="checkbox" name="encrypt_ballots" value="checked"/>{{ _("Encrypt the ballots until end of vote") }}</label><br/>
+      <label><input type="checkbox" name="encrypt_voterlist" value="checked"/>{{ _("Encrypt list of delivered pseudonyms until end of vote") }}</label><br/>
+    </p>
+
+    <p>
+    <textarea name="use_public_key" id="use_public_key" rows="4" style="display: none;">{{ public_key }}</textarea>
+    </p>
+
+  </fieldset>
+  
+  <p class="main">
+    <input type="checkbox" checked id="dry_run" name="dry_run" value="checked" onChange="testState()"><label for="dry_run">{{ _("Try without sending e-mails") }}</label>
+  </p>
+
+  <fieldset id="delivery_options" name="delivery_options" style="display: none;">
+    <legend>{{ _("Deliver voter credentials") }}</legend>
+
+    <p>
+      <textarea name="message" id="message" cols=50 onChange="messageTouch()"></textarea>
+    </p>
+    
+    <p>
+      <label><input type="radio" name="message_source" value="filled" checked onChange="messageState()"/>{{ _("Message") }}</label>
+      <label><input type="radio" name="message_source" value="template" onChange="messageState()"/>{{ _("Template") }}</label>     
+    </p>
+    
+    <fieldset id="mailserver" name="mailserver">
+      <legend>{{ _("Mail server credentials") }}</legend>
+      <div id="mailconfig">
+        <div id="serveraddr">
+          <input type="text" name="server" id="server" placeholder="{{ _("smtp.infoaed.ee") }}"/>
+        </div>
+        <div id="logindetail">
+          <input type="text" name="username" id="username" placeholder="{{ _("username") }} "/>
+          <input type="text" name="password" id="password" placeholder="{{ _("password123") }}"/>
+          <!--<input type="password" name="password" id="password" size="20"/>-->
+        </div>
+      </div>
+    </fieldset>
+      
+  </fieldset>
+  
+  <p id="run_area">
+    <input type="submit" value="{{ _("Create the ballot box!") }}" name="submit" id="submit">
+  </p>
+  </form>
+  
+  </div>
+
+  <fieldset id="response_fs" name="response_fs" style="display: none;" itemscope itemtype="https://schema.org/VoteAction">
+    <legend id="response_title">{{ _("Voting progress") }}</legend>
+    
+    <div id="response" class="response" itemscope itemtype="https://schema.org/DataFeed"></div>
+  </fieldset>
+  {% endblock content -%}

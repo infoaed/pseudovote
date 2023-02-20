@@ -1,0 +1,42 @@
+{% extends "base.html" -%}
+    {% block title -%}
+      {% from 'macros.html' import requi -%}
+      {% set n = _("Pseudovote") -%}
+      {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+      {% set t = _("Vote receipt for {title}").format(title=bulletin_title) -%}
+      {% set d = _("This is a receipt generated just for you. You can follow the voting progress on public bulletin board here.") -%}
+      {% set og_t = t -%}
+      {% set og_d = d -%}
+      {% set tw_t = t -%}
+      {% set tw_d = d -%}  
+      {{ requi(name=n, alt_name=alt_n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+    {% endblock title -%}
+    {% block static -%}
+    {{ super() -}}
+    <script src="/{{ locale }}/dynamic/collect.js"></script>
+    {% endblock static -%}
+    
+  {% block content -%}
+
+  <textarea id="votes" rows="12" cols="50" readonly>{{ votes }}</textarea>
+
+  <span id="freeze">
+      
+    <p>
+      <div class="align-right" id="countdown" style="display: none;"></div>
+      <div class="align-left"><input type="text" id="pseudonym" name="pseudonym" width="20" placeholder="{{ _("pseudonym567") }}" value="{{ pseudonym }}" readonly="true"/></div>
+    </p>
+        
+    <p id="done_area">
+      <textarea id="content" name="content" rows="2" cols="50" placeholder="{{ _("the text of your ballot goes here...") }}" class="lucky-bg" readonly="true">{{ ballot }}</textarea>
+    </p>
+
+    <fieldset id="vastus" name="vastus">
+      <legend>{{ _("Receipt of your submitted vote") }}</legend>
+        
+      <div id="response" class="response">{{ receipt }}</div>
+      
+    </fieldset>
+    
+  </span>
+  {% endblock content -%}

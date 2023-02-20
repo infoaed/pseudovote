@@ -1,0 +1,11 @@
+uvicorn
+starlette
+sse-starlette
+asyncpg
+aiosmtplib
+jinja2<=3.0.3
+asgi-babel
+python-dateutil
+python-multipart
+regex
+pgpdump

@@ -1,0 +1,30 @@
+{% extends "base.html" -%}
+    {% block title -%}
+      {% from 'macros.html' import requi, json_meta -%}
+      {% set n = _("Pseudovote") -%}
+      {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+      {% set t = bulletin_title -%}
+      {% set d = _("Audit feed to follow voting progress and to receive the list of registered pseudonyms.") -%}
+      {% set og_t = t -%}
+      {% set og_d = d -%}
+      {% set tw_t = t -%}
+      {% set tw_d = d -%}  
+      {{ requi(name=n, alt_name=alt_n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+      {{ json_meta(metadata=json_metadata(request, name=n, alt_name=alt_n, title=t, description=d, params = metadata_params, page="audit")) }}
+    {% endblock title -%}
+    {% block static -%}
+    {{ super() -}}
+    <script>
+      let bulletin_token = '{{ token }}';
+    </script>
+    <script src="/static/sse.js"></script>
+    <script src="/{{ locale }}/dynamic/audit.js"></script>
+    {% endblock static -%}
+
+{% block content -%}
+  <fieldset id="response_fs" name="response_fs" style="display: none;" itemscope itemtype="https://schema.org/VoteAction">
+    <legend id="response_title">{{ _("Voting progress") }}</legend>
+    
+    <div id="response" class="response" itemscope itemtype="https://schema.org/DataFeed"></div>
+  </fieldset>
+  {% endblock content -%}

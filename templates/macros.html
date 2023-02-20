@@ -1,0 +1,22 @@
+{% macro requi(name, alt_name, title, description, og_title, og_description, twitter_title, twitter_description) -%}
+    <title>{{ name + ": " + title if name|length > 0 else title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta property="og:title" content="{{ og_title }}" />
+    <meta property="og:description" content="{{ og_description }}" />
+    <meta name="twitter:title" content="{{ twitter_title }}" />
+    <meta name="twitter:description" content="{{ twitter_description }}" />
+{% endmacro -%}
+
+{% macro json_meta(metadata) -%}
+    {% if metadata -%}
+    <script type="application/ld+json">
+    {{ metadata | tojson }}
+    </script>
+    {% endif -%}
+{% endmacro -%}
+
+{% macro more_locales(request, locale) -%}
+{% for l in available_locales if l != locale -%}
+        <a href="{{ request.url_for("root") + l if request.url.path|length == 1 or (request.url.path|length == 3 and request.url.path[1:3] in available_locales) or (request.url.path|length == 4 and request.url.path[1:3] in available_locales and request.url.path[3:4] == "/") else request.url_for("root") + l + request.path }}">{{ locale_names[l][locale] }}</a>{% if loop.revindex > 2 %}, {% elif loop.revindex == 2 %} {{ _("and") }} {% endif -%}
+{% endfor -%}
+{% endmacro -%}

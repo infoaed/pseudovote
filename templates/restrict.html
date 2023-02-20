@@ -1,0 +1,23 @@
+{% extends "base.html" -%}
+    {% block title -%}
+      {% from 'macros.html' import requi -%}
+      {% set n = _("Pseudovote") -%}
+      {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+      {% set t = _("Access restricted!") -%}
+      {% set d = _("This is a bulletin board with access restrictions stemming from poll settings.") -%}
+      {% set og_t = t -%}
+      {% set og_d = d -%}
+      {% set tw_t = t -%}
+      {% set tw_d = d -%}  
+      {{ requi(name=n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+    {% endblock title -%}
+    {% block static -%}
+    {{ super() -}}
+    <script src="/{{ locale }}/dynamic/collect.js"></script>
+    {% endblock static -%}
+    
+  {% block content -%}
+    <h3>{{ _("Access to this bulletin board is restricted!") }}</h3>
+    <p>{{ _("You may want consult the initiator of this poll or create your own at {url}.").format(url='<a href="' + url_for('root') + locale_in_path(request) + '">' + request.url.hostname + '</a>')|safe }}</p>
+  {% endblock content -%}
+  

@@ -1,0 +1,892 @@
+# Estonian translations for Pseudovote.
+# Copyright (C) 2021 Märt Põder
+# This file is distributed under the same license as Pseudovote itself.
+# Märt Põder <tramm@infoaed.ee>, 2021-2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version:  0.2.1\n"
+"Report-Msgid-Bugs-To: tramm@infoaed.ee\n"
+"POT-Creation-Date: 2023-02-20 17:06+0200\n"
+"PO-Revision-Date: 2023-02-20 16:48+0200\n"
+"Last-Translator: Märt Põder <tramm@infoaed.ee>\n"
+"Language: et\n"
+"Language-Team: Estonian <lp-l10n-et@lists.launchpad.net>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.11.0\n"
+
+#: templates/audit.html:4 templates/base.html:19 templates/collect.html:4
+#: templates/empty.html:4 templates/restrict.html:4 templates/voted.html:4
+msgid "Pseudovote"
+msgstr ""
+
+#: templates/audit.html:5 templates/base.html:20 templates/collect.html:5
+#: templates/empty.html:5 templates/restrict.html:5 templates/voted.html:5
+msgid "Pseudonymous voting on the Internet"
+msgstr "Pseudonüümne hääletamine Internetis"
+
+#: templates/audit.html:7
+msgid ""
+"Audit feed to follow voting progress and to receive the list of "
+"registered pseudonyms."
+msgstr ""
+"Auditivoog hääletuse käigu jälgimiseks ja registreeritud pseudonüümide "
+"nimekirja saamiseks."
+
+#: templates/audit.html:26 templates/index.html:220
+msgid "Voting progress"
+msgstr "Hääletuse käik"
+
+#: templates/audit.js:13 templates/collect.js:221 templates/index.js:354
+msgid "Server response"
+msgstr "Serveri vastus"
+
+#: templates/audit.js:33 templates/index.js:554
+msgid "Session started"
+msgstr "Sessiooni algus"
+
+#: templates/audit.js:108 templates/collect.js:317 templates/collect.js:347
+#: templates/index.js:628
+msgid "Thank you for taking digital democracy seriously!"
+msgstr "Aitäh, et võtad digidemokraatiat tõsiselt!"
+
+#: templates/audit.js:116 templates/audit.js:135 templates/index.js:636
+#: templates/index.js:655
+msgid "Better luck next time!"
+msgstr "Järgmine kord paremini!"
+
+#: templates/base.html:21
+msgid "Simple yet auditable polls on Internet"
+msgstr "Lihtsad ja vaadeldavad hääletused Internetis"
+
+#: templates/base.html:22
+msgid ""
+"Deliver random pseudonyms to a list of e-mails and collect the votes on "
+"public bulletin board in a reasonably secret ballot."
+msgstr ""
+"Saadab osalejate e-mailidele juhuslikud pseudonüümid ja kogub nende abil "
+"antud hääled kokku avalikul teadetetahvlil."
+
+#: templates/base.html:49
+msgid ""
+"This is an educational yet functional <a "
+"href=\"https://en.wikipedia.org/wiki/Voting_machine\">voting machine</a> "
+"by <a href=\"https://infoaed.ee/\">Märt Põder</a>. It exemplifies the "
+"simplest process of casting pseudonymous votes on a public bulletin "
+"board, providing an entry point to <a "
+"href=\"https://en.wikipedia.org/wiki/Secret_ballot\">secret ballots</a> "
+"on Internet. At some point you will find <a "
+"href=\"https://github.com/infoaed/pseudovote\">the source code</a> on "
+"GitHub."
+msgstr ""
+"Kuigi haridusliku eesmärgiga, on see täiesti toimiv <a "
+"href=\"https://et.wikipedia.org/wiki/Elektrooniline_hääletamine\">hääletusmasin</a>."
+" Masina autor on <a href=\"https://infoaed.ee/\">Märt Põder</a> ja see "
+"näitlikustab lihtsaimat pseudonüümse hääletamise protseduuri, mis "
+"osalejate jaoks algusest lõpuni läbipaistev. Ühtlasi on see võimalus viia"
+" läbi <a "
+"href=\"https://et.wikipedia.org/wiki/Valimispõhimõtted#Salajasus\">salajast"
+" hääletust</a> Internetis. Mõne aja pärast leiab ilmselt masina <a "
+"href=\"https://github.com/infoaed/pseudovote\">lähtekoodi</a> ka "
+"GitHubist."
+
+#: templates/base.html:51
+msgid "The site is also available in {languages}."
+msgstr "Sait on saadaval ka {languages} keeles."
+
+#: templates/collect.html:7
+msgid ""
+"Public bulletin board to collect the pseudonymous ballots and follow the "
+"voting progress."
+msgstr ""
+"Avalik teadetetahvel pseudonüümsete häälte vastuvõtmiseks ja hääletuse "
+"käigu jälgimiseks."
+
+#: templates/collect.html:37
+msgid "your pseudonym..."
+msgstr "sinu pseudonüüm..."
+
+#: templates/collect.html:45
+msgid "...and the text of your ballot"
+msgstr "...ja sedelile minev tekst"
+
+#: templates/collect.html:49
+msgid "Sumbit the vote!"
+msgstr "Annan oma hääle!"
+
+#: templates/collect.js:46
+msgid "days"
+msgstr "päeva"
+
+#: templates/collect.js:48
+msgid "hours"
+msgstr "tundi"
+
+#: templates/collect.js:54
+msgid "seconds"
+msgstr "sekundit"
+
+#: templates/collect.js:291 templates/collect.js:298
+msgid ""
+"You may want to try again after checking connection status and/or server "
+"limits!"
+msgstr ""
+"Võid üle kontrollida oma netiühenduse või hääletusserveri piirangud ning "
+"proovida seejärel uuesti!"
+
+#: templates/collect.js:310 templates/collect.js:321 templates/voted.html:35
+msgid "Receipt of your submitted vote"
+msgstr "Hääle vastuvõtmise kviitung"
+
+#: templates/collect.js:314 templates/collect.js:325
+msgid "Ballot submitted!"
+msgstr "Sedel edastatud!"
+
+#: templates/collect.js:385
+msgid "Starting in"
+msgstr "Alguseni"
+
+#: templates/collect.js:385
+msgid "Voting started!"
+msgstr "Hääletus algas!"
+
+#: templates/collect.js:393
+msgid "Ending in"
+msgstr "Lõpuni"
+
+#: templates/collect.js:393
+msgid "Voting finished!"
+msgstr "Hääletus on läbi!"
+
+#: templates/empty.html:6
+msgid "Your poll could be here!"
+msgstr "Siin võiks olla sinu hääletus!"
+
+#: templates/empty.html:7
+msgid ""
+"A free slot to conduct an auditable poll. After initialisation this "
+"becomes a transparent ballot box for the voters and auditors."
+msgstr ""
+"See aadress on vaba hääletuse läbiviimiseks. Pärast lähtestamist saab "
+"sellest läbipaistev häältekast valijate ja vaatlejate jaoks."
+
+#: templates/empty.html:20
+msgid "This is a free slot for a future poll!"
+msgstr "See aadress on vaba tulevasteks hääletusteks!"
+
+#: templates/empty.html:21
+msgid "You can create a new poll at {url}."
+msgstr "Uued hääletuse saad algatada aadressil {url}."
+
+#: templates/index.html:15
+msgid ""
+"voter@gmail.com\n"
+"voter@archive.org\n"
+"voter@protonmail.com\n"
+"\n"
+"(Or just drag and drop list of voter e-mails here.)"
+msgstr ""
+"valija@gmail.com\n"
+"valija@eesti.ee\n"
+"valija@protonmail.com\n"
+"\n"
+"(Või lihtsalt lohista siia hääletajate e-mailide nimekiri.)"
+
+#: templates/index.html:23
+msgid "Generic poll/election"
+msgstr "Geneeriline hääletus"
+
+#: templates/index.html:28
+msgid "Choices, timing and location"
+msgstr "Valikud, ajastus ja asukoht"
+
+#: templates/index.html:31
+msgid "Example poll"
+msgstr "Näitlik hääletus"
+
+#: templates/index.html:39
+msgid "Refresh"
+msgstr "Uuenda"
+
+#: templates/index.html:39
+msgid "Append"
+msgstr "Lisa lõppu"
+
+#: templates/index.html:57
+msgid "Token"
+msgstr "Tunnuskood"
+
+#: templates/index.html:58
+msgid "Name"
+msgstr "Nimetus"
+
+#: templates/index.html:64
+msgid "Default pseudonyms"
+msgstr "Vaikimisi pseudonüümid"
+
+#: templates/index.html:68
+msgid "Custom voter credentials"
+msgstr "Mugandatud hääletustunnused"
+
+#: templates/index.html:71
+msgid "Flowers"
+msgstr "Lilled"
+
+#: templates/index.html:72
+msgid "Islands"
+msgstr "Saared"
+
+#: templates/index.html:73
+msgid "Emojis"
+msgstr "Emojid"
+
+#: templates/index.html:74
+msgid "Star Wars"
+msgstr "Tähesõjad"
+
+#: templates/index.html:79
+msgid ""
+"ballard\n"
+"barnaby\n"
+"brennan\n"
+"cadfael\n"
+"chase\n"
+"clouseau\n"
+"columbo\n"
+"conway\n"
+"cooper\n"
+"dalgliesh\n"
+"dinkley\n"
+"drew\n"
+"dupin\n"
+"ellacott\n"
+"falco\n"
+"fletcher\n"
+"gently\n"
+"gideon\n"
+"hattori\n"
+"holmes\n"
+"jaspersen\n"
+"kakababu\n"
+"lestrade\n"
+"lupin\n"
+"magnum\n"
+"maigret\n"
+"marlowe\n"
+"marple\n"
+"mars\n"
+"mason\n"
+"millhone\n"
+"monk\n"
+"morse\n"
+"mulder\n"
+"peabody\n"
+"petrovich\n"
+"plum\n"
+"poirot\n"
+"ramotswe\n"
+"rebus\n"
+"salander\n"
+"scully\n"
+"spade\n"
+"tennison\n"
+"tracy\n"
+"warshawski\n"
+"watson\n"
+"wolfe"
+msgstr ""
+
+#: templates/index.html:130
+msgid "Simple pseudonyms"
+msgstr "Lihtsad pseudonüümid"
+
+#: templates/index.html:132
+msgid "With a pinch of salt"
+msgstr "Näputäie soolaga"
+
+#: templates/index.html:140
+msgid "I have high trust in my voters"
+msgstr "Usaldan hääletusel osalejaid"
+
+#: templates/index.html:144
+msgid "Restrict access to bulletin board"
+msgstr "Teadetetahvli ligipääsu piiramine"
+
+#: templates/index.html:147
+msgid "Only allow one ballot per pseudonym"
+msgstr "Luba ainult üht häält iga pseudonüümi kohta"
+
+#: templates/index.html:148
+msgid "Provide voter with personal balloting address"
+msgstr "Edasta hääletajale osalemiseks personaalne aadress"
+
+#: templates/index.html:152
+msgid "Only allow predefined choices on ballots"
+msgstr "Luba kanda sedelile vaid etteantud valikuid"
+
+#: templates/index.html:153
+msgid "Refuse recording invalid ballots"
+msgstr "Keeldu rikutud sedelite salvestamisest"
+
+#: templates/index.html:157
+msgid "Provide bulletin board with a hashed list of voters"
+msgstr "Edasta teadetetahvlile hääletajate räside nimekiri"
+
+#: templates/index.html:158
+msgid "Deny submitting ballots for unlisted voters"
+msgstr "Ära luba nimekirja kandmata hääletajal sedelit edastada"
+
+#: templates/index.html:159
+msgid "Deny bulletin board access for unlisted voters"
+msgstr "Keeldu teadetetahvli avamisest nimekirja kandmata hääletajatele"
+
+#: templates/index.html:160
+msgid "Refuse recording ballots from unlisted voters"
+msgstr "Ära võta vastu sedeleid nimekirja kandmata hääletajatelt"
+
+#: templates/index.html:164
+msgid "Limit access on repeated invalid ballots"
+msgstr "Piira ligipääsu korduvate rikutud sedelite korral"
+
+#: templates/index.html:165
+msgid "Limit access on repeated unlisted voters"
+msgstr "Piira ligipääsu korduvate nimekirjaväliste hääletajate korral"
+
+#: templates/index.html:166
+msgid "Limit access on repetitive voting patterns"
+msgstr "Piira ligipääsu korduvate hääletusmustrite korral"
+
+#: templates/index.html:170
+msgid "Encrypt the ballots until end of vote"
+msgstr "Krüpti sedelid kuni hääletuse lõpuni"
+
+#: templates/index.html:171
+msgid "Encrypt list of delivered pseudonyms until end of vote"
+msgstr "Krüpti jagatud pseudonüümide nimekiri hääletuse lõpuni"
+
+#: templates/index.html:181
+msgid "Try without sending e-mails"
+msgstr "Katseta e-maile saatmata"
+
+#: templates/index.html:185
+msgid "Deliver voter credentials"
+msgstr "Hääletussedelite edastamine"
+
+#: templates/index.html:192
+msgid "Message"
+msgstr "Sõnumi tekst"
+
+#: templates/index.html:193
+msgid "Template"
+msgstr "Blankett"
+
+#: templates/index.html:197
+msgid "Mail server credentials"
+msgstr "Meiliserveri parameetrid"
+
+#: templates/index.html:200
+msgid "smtp.infoaed.ee"
+msgstr ""
+
+#: templates/index.html:203
+msgid "username"
+msgstr "kasutaja"
+
+#: templates/index.html:204
+msgid "password123"
+msgstr "parool123"
+
+#: templates/index.html:213
+msgid "Create the ballot box!"
+msgstr "Pane valimiskast valmis!"
+
+#: templates/index.js:238
+msgid ""
+"From: Pseudovote <pseudo@infoaed.ee>\n"
+"To: ${voters}\n"
+"Subject: ${title}"
+msgstr ""
+
+#: templates/index.js:243
+msgid ""
+"Your pseudonym for voting is:\n"
+"\n"
+"* ${pseudonym}\n"
+"\n"
+"Submit your vote at the public bulletin board:\n"
+"\n"
+"* ${url}"
+msgstr ""
+"Sinu pseudonüüm hääletusel osalemiseks on:\n"
+"\n"
+"* ${pseudonym}\n"
+"\n"
+"Anna oma hääl avalikul teadetetahvlil:\n"
+"\n"
+"* ${url}"
+
+#: templates/index.js:252
+msgid "Voting starts at ${start} and closes at ${finish}."
+msgstr "Hääletus algab ${start} ja lõpeb ${finish}."
+
+#: templates/index.js:255
+msgid ""
+"Guidelines in nutshell:\n"
+"\n"
+"* To cast your vote, please write your pseudonym and your choice into "
+"designated fields and submit ballot to server.\n"
+"* You can fill the ballot manually or use predefined choices in user "
+"interface to prefill and then review.\n"
+"* To preserve privacy of your vote do not publicly relate your pseudonym "
+"with your person nor disclose it to anyone.\n"
+"\n"
+"Happy voting!\n"
+"\n"
+"Sincereley \"etc\"\n"
+"Pseudovote"
+msgstr ""
+"Hääletaja meelespea:\n"
+"\n"
+"* Hääletamiseks sisesta valimiste lehel oma pseudonüüm ja seejärel märgi "
+"hääletussedelile oma valik. \n"
+"* Võid täita sedeli käsitsi või kui valikud on ette antud, siis eeltäita "
+"sedeli valikudialoogi abil. \n"
+"* Hääletuse salajasuse tagamiseks ära seosta pseudonüümi oma "
+"isikuandmetega ega edasta seda kellelegi.\n"
+"\n"
+"Toredat hääletamist!\n"
+"\n"
+"Siiralt \"jne\"\n"
+"Pseudovote"
+
+#: templates/index.js:284 templates/voted.html:27
+msgid "pseudonym567"
+msgstr "pseudonyym567"
+
+#: templates/index.js:291
+msgid "and ${count} more voters"
+msgstr "ja veel ${count} hääletajat"
+
+#: templates/index.js:292
+msgid "add list of e-mails above!"
+msgstr "lisa e-mailide nimekiri ülal!"
+
+#: templates/index.js:550
+msgid "Bulletin board initialized..."
+msgstr "Teadetetahvel käivitatud..."
+
+#: templates/macros.html:20
+msgid "and"
+msgstr "ja"
+
+#: templates/restrict.html:6
+msgid "Access restricted!"
+msgstr "Ligipääs piiratud!"
+
+#: templates/restrict.html:7
+msgid ""
+"This is a bulletin board with access restrictions stemming from poll "
+"settings."
+msgstr "Ligipääs sellele teadetetahvlile on piiratud hääletuse seadistuste tõttu."
+
+#: templates/restrict.html:20
+msgid "Access to this bulletin board is restricted!"
+msgstr "Ligipääs sellele teadetetahvlile on piiratud!"
+
+#: templates/restrict.html:21
+msgid ""
+"You may want consult the initiator of this poll or create your own at "
+"{url}."
+msgstr ""
+"Võid uurida hääletuse korraldajalt või ise algatada hääletuse aadressil "
+"{url}."
+
+#: templates/voted.html:6
+msgid "Vote receipt for {title}"
+msgstr "Kviitung valimistel {title}"
+
+#: templates/voted.html:7
+msgid ""
+"This is a receipt generated just for you. You can follow the voting "
+"progress on public bulletin board here."
+msgstr ""
+"See on kviitung sinu hääle vastuvõtmise kohta. Hääletuse käiku võid "
+"jälgida sellel avalikul teadetetahvlil siin."
+
+#: templates/voted.html:31
+msgid "the text of your ballot goes here..."
+msgstr "sedelile minev tekst..."
+
+#~ msgid "Simple yet auditable secret voting on Internet!"
+#~ msgstr "Kübaratrikk läbi uduloori!"
+
+#~ msgid "You can create a new election at "
+#~ msgstr "Uued valimised saad algtada aadressil"
+
+#~ msgid ""
+#~ "From: Uduloor <pseudo@infoaed.ee>\n"
+#~ "To: ...\n"
+#~ "Subject: ${title}\n"
+#~ "\n"
+#~ "Your pseudonym for voting at the upcoming election is:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Voting takes place at:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Guidelines in nutshell:\n"
+#~ "\n"
+#~ "* To cast your vote, please write"
+#~ " down your pseudonym followed by your"
+#~ " choice at the election.\n"
+#~ "* Make sure you write this "
+#~ "information on a separate line at "
+#~ "the bulletin board to avoid any "
+#~ "confusion.\n"
+#~ "* To preserve your anonymity in "
+#~ "this secret election you *should not*"
+#~ " log in to the bulletin board.\n"
+#~ ""
+#~ "* For extra caution you can use"
+#~ " the private mode of your web "
+#~ "browser or even special anonymity "
+#~ "preserving browser.\n"
+#~ "* Before voting is closed, please "
+#~ "make sure your vote is still "
+#~ "correctly displayed at the bulletin "
+#~ "board.\n"
+#~ "* After voting is closed you (or"
+#~ " actually anyone) can tally the votes"
+#~ " to make sure everything was done "
+#~ "correctly.\n"
+#~ "\n"
+#~ "Happy voting!\n"
+#~ "\n"
+#~ "Sincereley \"etc\"\n"
+#~ "Uduloor"
+#~ msgstr ""
+#~ "From: Uduloor <pseudo@infoaed.ee>\n"
+#~ "To: ...\n"
+#~ "Subject: ${title}\n"
+#~ "\n"
+#~ "Your pseudonym for voting at the upcoming election is:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Voting takes place at:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Guidelines in nutshell:\n"
+#~ "\n"
+#~ "* To cast your vote, please write"
+#~ " down your pseudonym followed by your"
+#~ " choice at the election.\n"
+#~ "* Make sure you write this "
+#~ "information on a separate line at "
+#~ "the bulletin board to avoid any "
+#~ "confusion.\n"
+#~ "* To preserve your anonymity in "
+#~ "this secret election you *should not*"
+#~ " log in to the bulletin board.\n"
+#~ ""
+#~ "* For extra caution you can use"
+#~ " the private mode of your web "
+#~ "browser or even special anonymity "
+#~ "preserving browser.\n"
+#~ "* Before voting is closed, please "
+#~ "make sure your vote is still "
+#~ "correctly displayed at the bulletin "
+#~ "board.\n"
+#~ "* After voting is closed you (or"
+#~ " actually anyone) can tally the votes"
+#~ " to make sure everything was done "
+#~ "correctly.\n"
+#~ "\n"
+#~ "Happy voting!\n"
+#~ "\n"
+#~ "Sincereley \"etc\"\n"
+#~ "Uduloor"
+
+#~ msgid ""
+#~ "Your pseudonym for voting at the upcoming election is:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Voting takes place at:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Guidelines in nutshell:\n"
+#~ "\n"
+#~ "* To cast your vote, please write"
+#~ " down your pseudonym followed by your"
+#~ " choice at the election.\n"
+#~ "* Make sure you write this "
+#~ "information on a separate line at "
+#~ "the bulletin board to avoid any "
+#~ "confusion.\n"
+#~ "* To preserve your anonymity in "
+#~ "this secret election you *should not*"
+#~ " log in to the bulletin board.\n"
+#~ ""
+#~ "* For extra caution you can use"
+#~ " the private mode of your web "
+#~ "browser or even special anonymity "
+#~ "preserving browser.\n"
+#~ "* Before voting is closed, please "
+#~ "make sure your vote is still "
+#~ "correctly displayed at the bulletin "
+#~ "board.\n"
+#~ "* After voting is closed you (or"
+#~ " actually anyone) can tally the votes"
+#~ " to make sure everything was done "
+#~ "correctly.\n"
+#~ "\n"
+#~ "Happy voting!\n"
+#~ "\n"
+#~ "Sincereley \"etc\"\n"
+#~ "Uduloor"
+#~ msgstr ""
+#~ "Sinu pseudonüüm hääletamisel on:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Valimised leiavad aset aadressil:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Valija meelespea:\n"
+#~ "\n"
+#~ "* Hääletamiseks kirjuta valimiste lehele "
+#~ "oma pseudonüüm ja seejärel märgi "
+#~ "hääletussedelile oma valik. \n"
+#~ "* Võid täita sedeli käsitsi või "
+#~ "kui valikud on ette antud, siis "
+#~ "eeltäita sedeli valikudialoogi abil. \n"
+#~ "* Hääletuse salajasuse tagamiseks ära "
+#~ "seosta pseudonüümi oma isikuandmetega ega "
+#~ "edasta seda kellelegi.\n"
+#~ "* Täiendavalt võid kasutada brauseri "
+#~ "privaatse lehitsemise režiimi või spetsiaalset"
+#~ " anonüümsust tagavat brauserit. \n"
+#~ "* Enne hääletuse lõppu veendu, et "
+#~ "sinu hääletussedel on teadetetahvlil esitatud"
+#~ " korrektselt.\n"
+#~ "* Pärast hääletuse sulgemist võid "
+#~ "teadetetahvlile märgitud hääled ise kokku "
+#~ "lugeda ja veenduda valimiste korrektsuses."
+#~ "\n"
+#~ "\n"
+#~ "Toredat hääletamist!\n"
+#~ "\n"
+#~ "Siiralt \"jne\"\n"
+#~ "Uduloor"
+
+#~ msgid ""
+#~ "voter@gmail.com\n"
+#~ "voter@archive.org\n"
+#~ "voter@protonmail.com\n"
+#~ "\n"
+#~ "(Or just drag and drop your list of voter e-mails here.)"
+#~ msgstr ""
+#~ "valija@gmail.com\n"
+#~ "valija@eesti.ee\n"
+#~ "valija@protonmail.com\n"
+#~ "\n"
+#~ "(Või lihtsalt lohista siia hääletusel osalejate e-mailide nimekiri.)"
+
+#~ msgid "Two step audit"
+#~ msgstr "Kaheastmeline audit"
+
+#~ msgid "Create election without sending e-mails"
+#~ msgstr "Loo valimised e-kirju saatmata"
+
+#~ msgid "Mailserver credentials"
+#~ msgstr "Meiliserveri andmed"
+
+#~ msgid "Your pseudonym for the upcoming election is..."
+#~ msgstr "Sinu pseudonüüm hääletamisel on..."
+
+#~ msgid "Start delivering the pseudonyms!"
+#~ msgstr "Hakkame pseudonüüme jagama!"
+
+#~ msgid ""
+#~ "From: Pseudovote <pseudo@infoaed.ee>\n"
+#~ "To: <email@server.net> /filled from the list provided/\n"
+#~ "Subject: ${title}\n"
+#~ msgstr ""
+#~ "From: Pseudovote <pseudo@infoaed.ee>\n"
+#~ "To: <email@server.net> /täidetakse nimekirja alusel automaatselt/\n"
+#~ "Subject: ${title}\n"
+
+#~ msgid ""
+#~ "Your pseudonym for voting at the election is:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Voting takes place at:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Guidelines in nutshell:\n"
+#~ "\n"
+#~ "* To cast your vote, please write"
+#~ " your pseudonym and your choice into"
+#~ " designated fields and submit ballot "
+#~ "to server.\n"
+#~ "* You can fill the ballot manually"
+#~ " or use predefined choices in user"
+#~ " interface to prefill and then "
+#~ "review.\n"
+#~ "* To preserve your anonymity in "
+#~ "election do not publicly relate your "
+#~ "pseudonym with your person nor disclose"
+#~ " it to anyone.\n"
+#~ "* For extra caution you can use"
+#~ " the private mode of your web "
+#~ "browser or even special anonymity "
+#~ "preserving browser.\n"
+#~ "* Before voting is closed, please "
+#~ "make sure your vote is still "
+#~ "correctly displayed at the bulletin "
+#~ "board.\n"
+#~ "* After voting is closed you (or"
+#~ " actually anyone) can tally the votes"
+#~ " to make sure everything was done "
+#~ "correctly.\n"
+#~ "\n"
+#~ "Happy voting!\n"
+#~ "\n"
+#~ "Sincereley \"etc\"\n"
+#~ "Pseudovote"
+#~ msgstr ""
+#~ "Sinu pseudonüüm hääletamisel on:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Valimised leiavad aset aadressil:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ "\n"
+#~ "Valija meelespea:\n"
+#~ "\n"
+#~ "* Hääletamiseks kirjuta valimiste lehele "
+#~ "oma pseudonüüm ja seejärel märgi "
+#~ "hääletussedelile oma valik. \n"
+#~ "* Võid täita sedeli käsitsi või "
+#~ "kui valikud on ette antud, siis "
+#~ "eeltäita sedeli valikudialoogi abil. \n"
+#~ "* Hääletuse salajasuse tagamiseks ära "
+#~ "seosta pseudonüümi oma isikuandmetega ega "
+#~ "edasta seda kellelegi.\n"
+#~ "* Täiendavalt võid kasutada brauseri "
+#~ "privaatse lehitsemise režiimi või spetsiaalset"
+#~ " anonüümsust tagavat brauserit. \n"
+#~ "* Enne hääletuse lõppu veendu, et "
+#~ "sinu hääletussedel on teadetetahvlil esitatud"
+#~ " korrektselt.\n"
+#~ "* Pärast hääletuse sulgemist võid "
+#~ "teadetetahvlile märgitud hääled ise kokku "
+#~ "lugeda ja veenduda valimiste korrektsuses."
+#~ "\n"
+#~ "\n"
+#~ "Toredat hääletamist!\n"
+#~ "\n"
+#~ "Siiralt \"jne\"\n"
+#~ "Pseudovote"
+
+#~ msgid "Deliver the ballots!"
+#~ msgstr "Jaga sedelid laiali!"
+
+#~ msgid "Election initialized..."
+#~ msgstr "Valimised käivitatud..."
+
+#~ msgid ""
+#~ "This is an educational yet functional"
+#~ " <a "
+#~ "href=\"https://en.wikipedia.org/wiki/Voting_machine\">voting "
+#~ "machine</a> by <a href=\"https://infoaed.ee/\">Märt"
+#~ " Põder</a>. It exemplifies the simplest "
+#~ "process of casting pseudonymous votes on"
+#~ " a public bulletin board, providing "
+#~ "an entry point to <a "
+#~ "href=\"https://en.wikipedia.org/wiki/Secret_ballot\">secret "
+#~ "ballots</a> on Internet. At some point"
+#~ " you will find <a "
+#~ "href=\"https://github.com/infoaed/pseudovote\">source code</a>"
+#~ " on GitHub."
+#~ msgstr ""
+#~ "Kuigi haridusliku eesmärgiga, on see "
+#~ "täiesti toimiv <a "
+#~ "href=\"https://et.wikipedia.org/wiki/Elektrooniline_hääletamine\">hääletusmasin</a>."
+#~ " Masina autor on <a "
+#~ "href=\"https://infoaed.ee/\">Märt Põder</a> ja see"
+#~ " näitlikustab lihtsaimat pseudonüümse hääletamise"
+#~ " protseduuri, mis on osalejate jaoks "
+#~ "auditeeritav. Ühtlasi on see võimalus "
+#~ "viia läbi <a "
+#~ "href=\"https://et.wikipedia.org/wiki/Valimispõhimõtted#Salajasus\">salajast"
+#~ " hääletust</a> Internetis. Mõne aja pärast"
+#~ " leiab masina <a "
+#~ "href=\"https://github.com/infoaed/pseudovote\">lähtekoodi</a> ka"
+#~ " GitHubist."
+
+#~ msgid ""
+#~ "Your pseudonym for voting at the election is:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Submit your vote at the public bulletin board:\n"
+#~ "\n"
+#~ "* ${url}\n"
+#~ msgstr ""
+#~ "Sinu pseudonüüm hääletusel osalemiseks on:\n"
+#~ "\n"
+#~ "* ${pseudonym}\n"
+#~ "\n"
+#~ "Anna oma hääl avalikul teadetetahvlil:\n"
+#~ "\n"
+#~ "* ${url}\n"
+
+#~ msgid "Voting starts at ${start} and closes at ${finish}.\n"
+#~ msgstr "Hääletus algab ${start} ja lõpeb ${finish}.\n"
+
+#~ msgid "Reload the page and try again!"
+#~ msgstr "Värskenda lehekülge ja proovi uuesti!"
+
+#~ msgid ""
+#~ "Julius Caesar\n"
+#~ "Genghis Khan\n"
+#~ "Jeanne d'Arc\n"
+#~ "Thomas Jefferson\n"
+#~ "Indira Gandhi\n"
+#~ "Nelson Mandela"
+#~ msgstr ""
+#~ "Julius Caesar\n"
+#~ "Tšingis-khaan\n"
+#~ "Jeanne d'Arc\n"
+#~ "Thomas Jefferson\n"
+#~ "Indira Gandhi\n"
+#~ "Nelson Mandela"
+
+#~ msgid "Limit access on high speed voting"
+#~ msgstr "Piira ligipääsu kiirhääletamise korral"
+
+#~ msgid "Refuse recording malformed ballots"
+#~ msgstr "Ära võta vastu valesti vormistatud sedeleid"
+
+#~ msgid "Election details"
+#~ msgstr "Valimiste kirjeldus"
+
+#~ msgid "Example election"
+#~ msgstr "Katsetame valimisi"
+
+#~ msgid "Custom list"
+#~ msgstr "Kohandatud nimekiri"
+

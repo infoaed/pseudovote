@@ -1,0 +1,262 @@
+p {
+  position: relative;
+}
+
+p.main {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+fieldset.choice {
+  margin-top: 0.8em;
+  margin-bottom: 1.4em;
+  padding-top: 0.6em;
+  padding-bottom: 0.8em;
+}
+
+fieldset {
+  margin-top: 0.8em;
+  margin-bottom: 1.4em;
+  padding-top: 0;
+  padding-bottom: 0.1em;
+}
+
+textarea {
+	width:99%;
+	resize: vertical;
+}
+
+.resize, .resize:hover {
+  cursor: ns-resize;
+  width:100%;
+  height: 7px;
+  background-color: transparent;
+  opacity: 0.0;
+  /* background-color: red; */
+  /* opacity: 0.3; */
+  position: absolute;
+  z-index: 10;
+  display: block;
+}
+
+.fullwidth {
+	width:99%;
+}
+
+#voters {
+  margin-top: 0.3em;
+}
+
+#votes {
+  margin-top: 0.3em;
+  background-color: gainsboro;
+  height: 5%;
+  white-space: pre;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#countdown {
+  position: absolute;
+  right: 10px;
+  background-color: transparent;
+}
+
+#countdown span {
+  background-color: transparent;
+}
+
+#pseudoconfig {
+  padding-bottom: 1em;
+}
+
+#salt_amount {
+  width: 2.5em;
+}
+
+#mailconfig { 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+#serveraddr {
+  flex: 1.5 0 auto;
+  display: flex;
+}
+
+#mailserver input {
+  flex: 1 0 auto;
+}
+
+#logindetail {
+  flex: 1 1 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+#logindetail input {
+  flex: 1 1 auto;
+}
+
+#response {
+  font-family: monospace;
+  background-color: gainsboro;
+  padding: 0.2em 1em 0.8em 1em;
+}
+
+#response a:link {
+  text-decoration: none;
+}
+
+#response_fs {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+  margin-bottom: 1.6em;
+}
+
+#content {
+}
+
+#submit {
+  margin-top: 0.3em;
+}
+
+#footer {
+  margin-top: 1.4em;
+  margin-bottom: 1.6em;
+  border-top: 1px solid gray;
+  font-size: small;
+  color: gray;
+}
+
+#footer a {
+  color: gray;
+  font-size: small;
+}
+
+.align-right {
+  text-align:right;
+  float: right;
+}
+
+.align-left {
+  float: left;
+}
+
+.draggable {
+  cursor: move;
+  user-select: none;
+}
+
+li {
+  list-style-type: none;
+  list-style: none;
+}
+
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 26px;
+}
+
+.radio, .check {
+  margin-left: 30px;
+}
+
+.loading::after {
+  display: block;
+  animation: working steps(1,end) 4s infinite;
+  content: "\200b";
+}
+
+@keyframes working {
+    0%   { content: "\200b"; }
+    4%  { content: "."; }
+    34%  { content: ".."; }
+    64%  { content: "..."; }
+}
+
+/* 🏳️‍🌈 colors */
+
+.todo {
+  color: gainsboro;
+}
+
+.todo.dark-mode {
+  color: dimgray;
+}
+
+#toggle {
+  position: fixed;
+  right: 4px;
+  top: 0;
+  text-align: right;
+  font-size: 3.5em;
+  cursor: pointer;
+  background-color: transparent;
+  opacity: 0.3;
+  z-index: 20;
+}
+
+.dark-mode #votes {
+  background-color: #121212;
+  color: white;
+}
+
+.dark-mode #response {
+  background-color: #121212;
+  color: white;
+}
+
+.lucky {
+  color: forestgreen;
+}
+
+.cautious {
+  color: goldenrod;
+}
+
+.trapped {
+  color: red;
+}
+
+.lucky-bg {
+  background: greenyellow;
+}
+
+.cautious-bg {
+  background: yellow;
+}
+
+.trapped-bg {
+  background: lightsalmon;
+}
+
+.lucky.dark-mode {
+  color: greenyellow;
+}
+
+.cautious.dark-mode {
+  color: yellow;
+}
+
+.trapped.dark-mode {
+  color: tomato;
+}
+
+.lucky-bg.dark-mode {
+  background: green;
+}
+
+.cautious-bg.dark-mode {
+  background: darkgoldenrod;
+}
+
+.trapped-bg.dark-mode {
+  background: darkred;
+}

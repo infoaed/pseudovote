@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang="{{ locale }}">
+<head>
+    
+    {%+ block meta -%}
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="color-scheme" content="light dark">
+    <meta name="twitter:card" content="summary"/>
+    <meta property="og:image" content="https://pseudovote.net/static/logo.jpg"/>
+    <meta name="twitter:image" content="https://pseudovote.net/static/logo.jpg"/>
+
+    <meta property="og:url" content="{{ request.url }}"/>
+    <link rel="canonical" href="{{ request.url }}"/>
+
+    {%+ block title -%}
+        {% from 'macros.html' import requi, json_meta -%}
+        {% set n = _("Pseudovote") -%}
+        {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+        {% set t = _("Simple yet auditable polls on Internet") -%}
+        {% set d = _("Deliver random pseudonyms to a list of e-mails and collect the votes on public bulletin board in a reasonably secret ballot.") -%}
+        {% set og_t = n + ": " + t -%}
+        {% set og_d = d -%}
+        {% set tw_t = alt_n -%}
+        {% set tw_d = d -%}  
+    {{ requi(name=n, alt_name=alt_n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+    {{ json_meta(metadata=json_metadata(request, name=n, alt_name=alt_n, title=t, description=d)) }}
+    {% endblock title -%}
+    
+    <meta name="generator" content="Pseudovote {{ version }}"/>
+    <meta http-equiv="last-modified" content="{{ modified }}"/>
+    {% block static -%}
+    <link rel="stylesheet" href="/static/styles.css"/>
+    <script src="/static/common.js"></script>
+    {% endblock static -%}
+    {% endblock meta %}
+    
+</head>
+<body onLoad="init();">
+
+  <span id="toggle" onclick="toggle_dark();" style="display: none;"></span>
+  
+  {% block content %}
+  {% endblock content %}
+
+  {% from 'macros.html' import more_locales -%}
+  <div id="footer" class="footer">
+      <p>{{ _('This is an educational yet functional <a href="https://en.wikipedia.org/wiki/Voting_machine">voting machine</a> by <a href="https://infoaed.ee/">Märt Põder</a>. It exemplifies the simplest process of casting pseudonymous votes on a public bulletin board, providing an entry point to <a href="https://en.wikipedia.org/wiki/Secret_ballot">secret ballots</a> on Internet. At some point you will find <a href="https://github.com/infoaed/pseudovote">the source code</a> on GitHub.')|safe }}</p>
+      
+      <p>{{ _("The site is also available in {languages}.").format(languages = more_locales(request, locale))|safe }}</p>
+  </div>
+
+</body>
+</html>

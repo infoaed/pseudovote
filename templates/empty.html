@@ -1,0 +1,23 @@
+{% extends "base.html" -%}
+    {% block title -%}
+      {% from 'macros.html' import requi -%}
+      {% set n = _("Pseudovote") -%}
+      {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+      {% set t = _("Your poll could be here!") -%}
+      {% set d = _("A free slot to conduct an auditable poll. After initialisation this becomes a transparent ballot box for the voters and auditors.") -%}
+      {% set og_t = t -%}
+      {% set og_d = d -%}
+      {% set tw_t = t -%}
+      {% set tw_d = d -%}  
+      {{ requi(name=n, alt_name=alt_n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+    {% endblock title -%}
+    {% block static -%}
+    {{ super() -}}
+    <script src="/{{ locale }}/dynamic/collect.js"></script>
+    {% endblock static -%}
+    
+  {% block content -%}
+    <h3>{{ _("This is a free slot for a future poll!") }}</h3>
+    <p>{{ _("You can create a new poll at {url}.").format(url='<a href="' + url_for('root') + locale_in_path(request) + '">' + request.url.hostname + '</a>')|safe }}</p>
+  {% endblock content -%}
+  

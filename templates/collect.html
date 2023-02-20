@@ -1,0 +1,65 @@
+{% extends "base.html" -%}
+    {% block title -%}
+      {% from 'macros.html' import requi, json_meta -%}
+      {% set n = _("Pseudovote") -%}
+      {% set alt_n = _("Pseudonymous voting on the Internet") -%}
+      {% set t = bulletin_title -%}
+      {% set d = _("Public bulletin board to collect the pseudonymous ballots and follow the voting progress.") -%}
+      {% set og_t = t -%}
+      {% set og_d = d -%}
+      {% set tw_t = t -%}
+      {% set tw_d = d -%}  
+      {{ requi(name=n, alt_name=alt_n, title=t, description=d, og_title=og_t, og_description=og_d, twitter_title=tw_t, twitter_description=tw_d) }}
+      {{ json_meta(metadata=json_metadata(request, name=n, alt_name=alt_n, title=t, description=d, params = metadata_params, page="bulletin")) }}
+    {% endblock title -%}
+    {% block static -%}
+    {{ super() -}}
+    <script>
+      let bulletin_timing = JSON.parse(`{{ timing|tojson }}`);
+      let limit_choices = {{ "true" if limit_choices else "false" }};
+    </script>
+    <script src="/static/sse.js"></script>
+    <script src="/{{ locale }}/dynamic/collect.js"></script>
+    {% endblock static -%}
+    
+  {% block content -%}
+  
+  <p>
+    <textarea itemscope itemtype="https://schema.org/DataFeed" id="votes" rows="12" cols="50" wrap="off" readonly>{{ votes }}</textarea>
+  </p>
+  
+  <span id="freeze">
+    
+    <form id="vote_form" name="vote_form" method="post" action="/api/vote">
+      
+      <p>
+        <div class="align-right" id="countdown"></div>
+        <div><input type="text" id="pseudonym" name="pseudonym" width="20" required placeholder="{{ _("your pseudonym...") }}" value="{{ pseudonym }}"{{ " readonly" if pseudonym|length > 0 or mute_unlisted}}/></div>
+      </p>
+      
+      <div class="choices_helper" id="choices_helper">
+      {{ choices|safe }}
+      </div>
+      
+      <p id="done_area">
+        <textarea itemscope itemtype="https://schema.org/Statement" id="content" name="content" rows="2" cols="50" placeholder="{{ _("...and the text of your ballot") }}"{{ " readonly" if limit_choices or mute_unlisted }}></textarea>
+      </p>
+      
+      <p>
+        <input type="submit" value="{{ _("Sumbit the vote!") }}" name="submit" id="submit"{{ " disabled" if mute_unlisted or limit_choices }}/>
+      </p>
+      
+      <input type="hidden" id="bulletin_token" name="bulletin_token" value="{{ request.path_params['token'] }}"/>
+      <input type="hidden" id="noscript_client" name="noscript_client" value="true"/>
+    
+    </form>
+
+    <fieldset id="response_fs" name="vastus" style="display: none;" itemscope itemtype="https://schema.org/VoteAction">
+      <legend id="response_title"></legend>
+        
+      <div id="response" class="response" itemprop="result"></div>
+      
+    </fieldset>
+    
+  </span>
+  {% endblock content %}
