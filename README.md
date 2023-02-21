@@ -1,6 +1,6 @@
 # Pseudovote
 
-Voting machine providing privacy preserving yet auditable polls/elections on the Internet. A three step process:
+Simple voting machine providing privacy preserving yet auditable polls/elections on the Internet. A three step process:
 
 * Deliver dedicated pseudonyms to a list of e-mails;
 * Collect the votes on a public bulletin board;
