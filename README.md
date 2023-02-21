@@ -8,7 +8,7 @@ Simple voting machine providing privacy preserving yet auditable polls/elections
 
 Ideally pseudonyms should be delivered by a separate service, but for most practical cases and educational use you can trust the web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
 
-Pseudovote discloses its full source code according to requirement of [AGPL  license](LICENSE).
+Full source code of the service is always disclosed based on its [AGPL  license](LICENSE).
 
 ## Running your own
 
