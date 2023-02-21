@@ -1,6 +1,6 @@
 --
 -- PostgreSQL create database script
--- (in context of versions 11 and 13, 14)
+-- (in context of versions 11, 13 and 14)
 --
 
 CREATE USER pseudo;

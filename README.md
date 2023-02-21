@@ -37,11 +37,11 @@ The web service should be running at [localhost:8000](http://localhost:8000).
 
 ## Auditable polls on Internet
 
-It gets complicated very quickly. Usually you just trust a service to run a poll for you, but not so much for citizens' assemblies, shareholder meetings etc. At a certain point people feel they need some proofs and transparency. Like we have using paper ballots.
+It gets complicated very quickly. Usually you just trust a service to run a poll for you, but not so much for citizens' assemblies, shareholder meetings etc. At a certain point people feel they need some proofs and transparency. Like we have using the paper ballots.
 
-You will be told that there is proof, but you have to know mathematics. After researching into options you end up choosing even more expensive service to trust, but still don't have much of a proof. For most of us the cryptography behind state of art voting systems is too complicated to understand.
+You will be told there is proof, but you have to know mathematics. After researching into options you end up choosing even more expensive service to trust, but still don't have much of a proof. For most of us the cryptography behind state of art voting systems is too complicated to understand.
 
-Pseudovote helps to take the opposite route, building on e-mail and pseudonyms -- well known tools already from the early days of Internet. Collecting pseudonymous ballots on public bulletin board is an addition you might still need to get used to. But it is probably closest you get to collecting pieces of paper in a transparent ballot box.
+Pseudovote helps to take the opposite route, building on e-mail and pseudonyms -- well known tools already from the early days of Internet. Collecting pseudonymous ballots on a public bulletin board is an addition you might still need to get used to. But it is probably closest you get to collecting pieces of paper in a transparent ballot box.
 
 Oldest and most experienced online communities tend to conduct their elections in a similar manner.
 
@@ -54,4 +54,4 @@ Preliminary forms of Pseudovote have been used at:
 * Wikimedia Estonia General Assembly [in 2020](https://wikimedia.ee/haaleta-nagu-vikipedist/)
 * Estonian Green Party General Assembly [in 2022](https://www.facebook.com/rohelised/posts/325701606250799)
 
-Initial experiments have resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).
+Initial experiments have indeed resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).

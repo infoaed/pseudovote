@@ -46,7 +46,7 @@
 
   {% from 'macros.html' import more_locales -%}
   <div id="footer" class="footer">
-      <p>{{ _('This is an educational yet functional <a href="https://en.wikipedia.org/wiki/Voting_machine">voting machine</a> by <a href="https://infoaed.ee/">Märt Põder</a>. It exemplifies the simplest process of casting pseudonymous votes on a public bulletin board, providing an entry point to <a href="https://en.wikipedia.org/wiki/Secret_ballot">secret ballots</a> on Internet. At some point you will find <a href="https://github.com/infoaed/pseudovote">the source code</a> on GitHub.')|safe }}</p>
+      <p>{{ _('This is an educational yet functional <a href="https://en.wikipedia.org/wiki/Voting_machine">voting machine</a> by <a href="https://infoaed.ee/">Märt Põder</a>. It exemplifies the simplest process of casting pseudonymous votes on a public bulletin board, providing an entry point to <a href="https://en.wikipedia.org/wiki/Secret_ballot">secret ballots</a> on Internet. You can find <a href="https://github.com/infoaed/pseudovote">the source code</a> on GitHub.')|safe }}</p>
       
       <p>{{ _("The site is also available in {languages}.").format(languages = more_locales(request, locale))|safe }}</p>
   </div>
