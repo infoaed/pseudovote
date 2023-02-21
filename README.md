@@ -6,9 +6,9 @@ Simple voting machine providing privacy preserving yet auditable polls/elections
 * Collect the votes on a public bulletin board;
 * Count the result in a reasonably secret ballot.
 
-Ideally pseudonyms should be delivered by a separate service, but for most practical cases and educational use you can trust web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
+Ideally pseudonyms should be delivered by a separate service, but for most practical cases and educational use you can trust the web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
 
-The web service discloses its full source code according to requirement of [AGPL  license](LICENSE).
+Pseudovote discloses its full source code according to requirement of [AGPL  license](LICENSE).
 
 ## Running your own
 
