@@ -23,14 +23,14 @@ pip install -r requirements.txt
 2. Set up the database
 
 ```
-sudo apt install postgres
+sudo apt install postgresql
 sudo -u postgres psql < database.sql
 ```
 
 3. Run the bulletin board
 
 ```
-uvicorn pseudovote:service.app
+uvicorn pseudovote.service:app
 ```
 
 The web service should be running at [localhost:8000](http://localhost:8000).
