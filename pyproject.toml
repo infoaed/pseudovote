@@ -1,0 +1,109 @@
+[build-system]
+requires = ["hatchling", "hatch-autorun"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pseudovote"
+description = "Simple yet auditable polls/elections on Internet"
+readme = "README.md"
+license = "AGPL-3.0-or-later"
+requires-python = ">=3.7"
+authors = [
+    { name = "Märt Põder", email = "tramm@infoaed.ee" },
+]
+keywords = ["voting", "polls", "pseudonyms", "auditability", "bulletin board", "starlette"]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: AnyIO",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+    "Intended Audience :: Education",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Other Audience",
+    "Topic :: Security :: Cryptography",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Message Boards",
+]
+
+dependencies = [
+    "uvicorn",
+    "starlette",
+    "sse-starlette",
+    "asyncpg",
+    "aiosmtplib",
+    "jinja2 <=3.0.3",
+    "asgi-babel",
+    "python-dateutil",
+    "python-multipart",
+    "regex",
+    "pgpdump",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://pseudovote.net"
+Documentation = "https://infoaed.github.io/pseudovote/"
+"Bug Tracker" = "https://github.com/infoaed/pseudovote/issues"
+Source = "https://github.com/infoaed/pseudovote"
+
+[tool.hatch.version]
+path = "pseudovote/__init__.py"
+
+[project.scripts]
+pseudovote = "pseudovote.__main__:main"
+
+[project.optional-dependencies]
+i18n = [
+    "babel",
+]
+docs = [
+    "mkdocs",
+    "mkautodoc",
+    "mkdocs-material",
+]
+deploy = [
+    "gunicorn",
+    "setproctitle",
+]
+
+[tool.hatch.envs.default.scripts]
+all = [
+    "hatch run i18n:all",
+    "hatch run docs:all",
+]
+
+[tool.hatch.envs.i18n.scripts]
+extract = "pybabel extract -F ./locales/babel.conf --project `hatch project metadata name` --version=`hatch version` -o ./locales/messages.pot ."
+update = "pybabel update -i ./locales/messages.pot -d ./locales"
+compile = "pybabel compile -f -d ./locales"
+all = [
+    "hatch run i18n:extract",
+    "hatch run i18n:update",
+    "hatch run i18n:compile",
+]
+
+[tool.hatch.envs.docs.scripts]
+serve = "mkdocs serve"
+build = "mkdocs build"
+deploy = "mkdocs gh-deploy --force"
+all = [
+    "hatch run docs:build",
+    "hatch run docs:deploy",
+]
+
+[tool.hatch.build.hooks.custom]
+path = "locales/babel.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/pseudovote",
+    "/static",
+    "/templates",
+    "/keys",
+    "/wordlists",
+    "/locales",
+    "/docs",
+]
