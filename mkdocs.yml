@@ -1,0 +1,37 @@
+site_name: Pseudovote
+site_description: Simple yet auditable polls on Internet.
+site_url: https://infoaed.github.io/pseudovote
+repo_name: infoaed/pseudovote
+repo_url: https://github.com/infoaed/pseudovote
+edit_uri: ""
+
+theme:
+    name: material
+    logo: logo.svg
+    favicon: favicon.ico
+    palette:
+      - scheme: 'default'
+        media: '(prefers-color-scheme: light)'
+        primary: deep purple
+        toggle:
+          icon: 'material/lightbulb'
+          name: "Switch to dark mode"
+      - scheme: 'slate'
+        media: '(prefers-color-scheme: dark)'
+        primary: deep purple
+        toggle:
+          icon: 'material/lightbulb-outline'
+          name: 'Switch to light mode'
+    features:
+        - navigation.sections
+        - header.autohide
+        - content.code.copy
+
+markdown_extensions:
+    - admonition
+    - codehilite
+    - mkautodoc
+
+nav:
+    - Introduction: index.md
+    - API: api.md
