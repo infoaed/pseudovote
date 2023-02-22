@@ -275,8 +275,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-your-own" class="md-nav__link">
-    Run your own
+  <a href="#running-your-own" class="md-nav__link">
+    Running your own
   </a>
   
 </li>
@@ -338,8 +338,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-your-own" class="md-nav__link">
-    Run your own
+  <a href="#running-your-own" class="md-nav__link">
+    Running your own
   </a>
   
 </li>
@@ -367,32 +367,26 @@
 <li>Count the result in a reasonably secret ballot.</li>
 </ul>
 <p>Minimalist setting for <a href="https://s68aa858fd10b80a7.jimcontent.com/download/version/1485167010/module/4933929061/name/beuchat11.pdf">public bulletin board voting</a> is reinforced by using common tools like e-mail and pseudonyms, but also immediate auditability of submitting your vote to a real time bulletin board, where you can literally see other votes coming in.</p>
-<p>Pseudovote moves in opposite direction to complicated voting systems with state of art cryptography, rather aiming to make the process understandable for every participant. Maybe even the web service with its tehcnological details is too much and the process should be simplified even more?</p>
+<p>Pseudovote moves in opposite direction to complicated voting systems with state of art cryptography, rather aiming to make the process understandable for every participant. Eve</p>
 <h2 id="in-real-life">In real life</h2>
 <p>Preliminary forms of Pseudovote have been used at:</p>
 <ul>
 <li><a href="https://gafgaf.infoaed.ee/en/posts/pseudonymous-voting-in-wikimedia/">Wikimedia Estonia General Assembly</a> (2020)</li>
 <li><a href="https://www.facebook.com/rohelised/posts/325701606250799">Estonian Green Party General Assembly</a> (2022)</li>
 </ul>
-<h2 id="run-your-own">Run your own</h2>
-<ol>
-<li>Download the source code</li>
-</ol>
+<h2 id="running-your-own">Running your own</h2>
+<p>1. Download the source code</p>
 <div class="codehilite"><pre><span></span><code>git clone https://github.com/infoaed/pseudovote.git
 cd pseudovote
 pip install -r requirements.txt
 </code></pre></div>
 
-<ol>
-<li>Set up the database</li>
-</ol>
+<p>2. Set up the database</p>
 <div class="codehilite"><pre><span></span><code>sudo apt install postgresql
 sudo -u postgres psql &lt; database.sql
 </code></pre></div>
 
-<ol>
-<li>Run the bulletin board</li>
-</ol>
+<p>3. Run the bulletin board</p>
 <div class="codehilite"><pre><span></span><code>uvicorn pseudovote.service:app
 </code></pre></div>
 
@@ -434,7 +428,7 @@ sudo -u postgres psql &lt; database.sql
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "header.autohide"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "header.autohide", "content.code.copy"], "search": "assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
       <script src="assets/javascripts/bundle.2a6f1dda.min.js"></script>
