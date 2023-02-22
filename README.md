@@ -12,7 +12,7 @@ Full source code of the service is always disclosed based on its [AGPL  license]
 
 ## Running your own
 
-1. Download the source code
+1\. Download the source code
 
 ```
 git clone https://github.com/infoaed/pseudovote.git
@@ -20,14 +20,14 @@ cd pseudovote
 pip install -r requirements.txt
 ```
 
-2. Set up the database
+2\. Set up the database
 
 ```
 sudo apt install postgresql
 sudo -u postgres psql < database.sql
 ```
 
-3. Run the bulletin board
+3\. Run the bulletin board
 
 ```
 uvicorn pseudovote.service:app
@@ -51,7 +51,7 @@ There is [a write-up](https://gafgaf.infoaed.ee/en/posts/pseudonymous-voting-in-
 
 Preliminary forms of Pseudovote have been used at:
 
-* Wikimedia Estonia General Assembly [in 2020](https://wikimedia.ee/haaleta-nagu-vikipedist/)
-* Estonian Green Party General Assembly [in 2022](https://www.facebook.com/rohelised/posts/325701606250799)
+* [Wikimedia Estonia General Assembly](https://wikimedia.ee/haaleta-nagu-vikipedist/) (2020)
+* [Estonian Green Party General Assembly](https://www.facebook.com/rohelised/posts/325701606250799) (2022)
 
 Initial experiments have indeed resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).

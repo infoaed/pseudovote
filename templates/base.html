@@ -19,7 +19,7 @@
         {% set n = _("Pseudovote") -%}
         {% set alt_n = _("Pseudonymous voting on the Internet") -%}
         {% set t = _("Simple yet auditable polls on Internet") -%}
-        {% set d = _("Deliver random pseudonyms to a list of e-mails and collect the votes on public bulletin board in a reasonably secret ballot.") -%}
+        {% set d = _("Deliver pseudonyms to a list of e-mails and collect the votes on public bulletin board in a reasonably secret ballot.") -%}
         {% set og_t = n + ": " + t -%}
         {% set og_d = d -%}
         {% set tw_t = alt_n -%}
@@ -46,7 +46,7 @@
 
   {% from 'macros.html' import more_locales -%}
   <div id="footer" class="footer">
-      <p>{{ _('This is an educational yet functional <a href="https://en.wikipedia.org/wiki/Voting_machine">voting machine</a> by <a href="https://infoaed.ee/">Märt Põder</a>. It exemplifies the simplest process of casting pseudonymous votes on a public bulletin board, providing an entry point to <a href="https://en.wikipedia.org/wiki/Secret_ballot">secret ballots</a> on Internet. You can find <a href="https://github.com/infoaed/pseudovote">the source code</a> on GitHub.')|safe }}</p>
+      <p>{{ _('This is an educational yet functional <a href="https://en.wikipedia.org/wiki/Voting_machine">voting machine</a> by <a href="https://infoaed.ee/">Märt Põder</a>. It exemplifies the simplest process of casting pseudonymous votes on a public bulletin board, providing an entry point to <a href="https://en.wikipedia.org/wiki/Secret_ballot">secret ballots</a> on the Internet. You can find <a href="https://infoaed.github.io/pseudovote">documentation</a> and the <a href="https://github.com/infoaed/pseudovote">source code</a> of the machine on GitHub.')|safe }}</p>
       
       <p>{{ _("The site is also available in {languages}.").format(languages = more_locales(request, locale))|safe }}</p>
   </div>

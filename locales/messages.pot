@@ -1,14 +1,14 @@
-# Translations template for PROJECT.
+# Translations template for pseudovote.
 # Copyright (C) 2023 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the pseudovote project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
+"Project-Id-Version: pseudovote 0.2.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-21 02:28+0200\n"
+"POT-Creation-Date: 2023-02-22 22:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,8 +61,8 @@ msgstr ""
 
 #: templates/base.html:22
 msgid ""
-"Deliver random pseudonyms to a list of e-mails and collect the votes on "
-"public bulletin board in a reasonably secret ballot."
+"Deliver pseudonyms to a list of e-mails and collect the votes on public "
+"bulletin board in a reasonably secret ballot."
 msgstr ""
 
 #: templates/base.html:49
@@ -73,9 +73,10 @@ msgid ""
 "simplest process of casting pseudonymous votes on a public bulletin "
 "board, providing an entry point to <a "
 "href=\"https://en.wikipedia.org/wiki/Secret_ballot\">secret ballots</a> "
-"on Internet. You can find <a "
-"href=\"https://github.com/infoaed/pseudovote\">the source code</a> on "
-"GitHub."
+"on the Internet. You can find <a "
+"href=\"https://infoaed.github.io/pseudovote\">documentation</a> and the "
+"<a href=\"https://github.com/infoaed/pseudovote\">source code</a> of the "
+"machine on GitHub."
 msgstr ""
 
 #: templates/base.html:51
