@@ -1,4 +1,6 @@
 __pycache__
 *.sock
 *.pyc
-
+*.mo
+/dist
+/site
