@@ -1,0 +1,535 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Simple yet auditable polls on Internet.">
+      
+      
+      
+        <link rel="canonical" href="https://pseudovote.github.io/api/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.13">
+    
+    
+      
+        <title>API - Pseudovote</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ffa9267a.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-documentation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Pseudovote" class="md-header__button md-logo" aria-label="Pseudovote" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Pseudovote
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/infoaed/pseudovote" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    infoaed/pseudovote
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Pseudovote" class="md-nav__button md-logo" aria-label="Pseudovote" data-md-component="logo">
+      
+  <img src="../logo.svg" alt="logo">
+
+    </a>
+    Pseudovote
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/infoaed/pseudovote" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    infoaed/pseudovote
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        API
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="api-documentation">API documentation</h1>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>startup</strong></code><span class="autodoc-punctuation">(</span><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Initialize app.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>shutdown</strong></code><span class="autodoc-punctuation">(</span><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Shut everything down as gracefully as possible.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>class </em><code>pseudovote.service.<strong>poll_choices</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">title=''</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">min=0</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">max=1</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">choices=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">ordered=False</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Convenience data structure to keep those crazy regexes beside the poll options data itself.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>class </em><code>pseudovote.service.<strong>VoteRejectException</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">message</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Dedicated exception for vote processing to simplify the logic.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>get_pseudonym_list</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">voter_count</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">word_list</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">cryptonyms=False</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">salt_amount=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Creating the randomized list of pseudonyms was initially the main feature of initial Uduloor version of pseudonymous voting routine, but it is currently provided here mostly for convenience. Ideally you should select the pseudonyms far away from the bulletin board service in order to avoid any manipulation of the votes. Selection process currently enables of selection pseudonyms and "salting" them with a number to create memorizable pairs of text and numbers following the pattern of <code>user123</code>. In a real polling situation you should provide pseudonyms separately and then maybe include hashed list of pseudonyms as gatekeeper for vote collecting mechanism to make sure it is not manipulated by spamming or similar.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>announce_event</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">timestamp</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">channel</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">started=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Announce events to every client in channel.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>announce_event_individual</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">timestamp</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">cq</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">channel</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">started=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Announce already past events for individual clients mostly on connecting the feed.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>event_publisher</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">channel</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">cq</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">start</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">end</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">encrypt_ballots=False</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Each client will have this publisher loop that will self destruct on disconnect. If no clients are listening to specifig election feed any more, the channel itself will be removed.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>database_listener</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">*args</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Listens to database notifications and relays the messages to designated channels. There is one notfication service for all the votings in order to keep the connection pool minimal.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>subscribe_bulletin</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Bulletin board of incoming votes is an essential feature and is displayed based on <code>token</code> of a poll. The feed is provided as EventSource feed in JSON and includes also poll status announcements.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>convert_to_token</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">name</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Convert name to a slug. Maybe should replace with dedicated slugify module.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>get_bulletin_token</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Coordinate available tokens with database.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>get_bulletin_name</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Coordinate available names with database.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>data_state</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">label</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">data={}</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">token='?'</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Content of data events about voting progress generated by the main voting process routine.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>start_voting</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Web entry point for creating a poll/an election.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>conduct_voting_process</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">body=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Tha main voting process routine will run on server until the voting is over and will provide real time data feed in EventSource format on audit dashboard. The feed consists of JSON formatted notes about changes in poll status. It takes POST request body as imput, if no request body is provided it will attempt to catch up with feed of already existing poll based on <code>token</code> parameter of request. Technically poll can fail if <code>create_poll</code> is not reached or successfully executed, but after that the process will run on autopilot up the end of voting process. If the connection is terminally dropped for some reason, one can connect to public audit dashboard <code>https://voting.host/audit/{token}</code> or using JSON event feed to continue auditing the process, which will provide you the same data except sent e-mails report, which is currently specific to the viewpoint of the creator of the poll.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>create_poll</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">title=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">token=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">name=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">start_time=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">end_time=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">choices=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">voterhash_type=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">ballot_type=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">reject_multi=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">personal_ballot=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">limit_choices=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">reject_invalid=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">reject_unlisted=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">mute_unlisted=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">block_unlisted=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">limit_invalid=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">limit_unlisted=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">limit_multi=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">encrypt_ballots=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">voter_count=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Register a poll in database.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>provide_voterlist_to_bulletin</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">pseudo_list</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">voterhash_type=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">bulletin_id=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Create voterlist for the poll in case <code>provide_voterlist</code> has been selected among bulletin board restrictions. Otherwise the voterlist will be not recorded to database, except for emergency fallback (see <code>encrypt_voterlist_under_embargo</code>).</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>encrypt_voterlist_under_embargo</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">pseudo_list</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">use_public_key</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">pubkey_id</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">bulletin_id</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Encrypting voterlist is done on demand with pgp public key provided at <code>use_public_key</code> in bulletin board access restrictions dialog or as a fallback when system breaks down for some reason. If voterlist is encrypted as a fallback, public key of the bulletin board system itself is used in order to decrypt the voterlist with private key after embargo, that is, when the election is over. Currently encrypting the voterlist is not proper feature of exemplified voting scheme, because encryping voterlist makes sense if it is done as completely separate process and maybe providing voterlist to bulletin board in already encrypted form (hashed pseydonyms and/or full encrypted voterlist to be decrypted after election is over).</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>get_ballot_count</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">bulletin_id</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Report ballot count for a poll/election.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>collector</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Vote collector is a web page where votes are collected for single pre-defined election. Election status and bulletin board of incoming votes are displayed in real time to provide voter transparancy and hands on understanding of the process. Vote collector is the most critical part of the system from viewpoint of technical universality and has to be usable without Javascript or any other fancy web technology. Currently vote collector is somewhat tested against HTTPS capable versions of Lynx, Netscape Navigator and different versions Android/iPhone.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>votes_until_now</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">token=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">bulletin_id=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">start=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">end=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">encrypt_ballots=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Displays bulletin board in TEXT format up to current moment. This is used as an easy way to display bulletin board history in vote collector TEXTAREA without extra work on client side, maybe ideally should be replaced with feeding the events from certain point in history and ensuring there are no gaps in bulletin board.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>data_for_bulletin_feed</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">token</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>If conduct election process is disturbed, this enables to condtinue observers still getting the needed audit information in the end of election. This is mostly for convenience and fallback to ensure continuity of the process in case of milder technical disturbances.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>data_for_bulletin</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">token=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">bulletin_id=None</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">pseudonym=''</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Returns basic data for displaying election for a voter or an auditor in vote collector web page or audit web page. Also formats the choices in HTML if they are predefined.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>is_in_voterlist</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">con</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">voterhash_type</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">bulletin_id</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">pseudonym</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Convenience method to detect if pseudonym is in voterlist.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>conforms_to_choices</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">ballot</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">c</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>If creator of elections has selected to refrain from storing invalid ballots, this is used to fuzzy match them to provided voter choices.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>normalize_ballot_text</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">text</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>process_vote</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Makes sense of the submitted vote and returns a receipt. This is heavily based on restrictions defined by creator of the poll. Normally the receipt is returned as JSON, but for explicitly defined noscript clients HTML page with receipt is displayed instead. Most of this playing with restrictions is educational and shouldn't be used in normal small scale elections where people trust each other enough to not opt for exhaustive technical manipulations.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>distributor_home</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>This is a home page for bulletin board, currently enabling to create an election for educational or testing purposes, ideally should be accepting voterlist hashes or similar for elections already defined elsewhere.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>audit_bulletin</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Opens independent audit feed for an election where auditors will be provided data needed to audit the elections of tally the votes. The data displayed is the same displayed on the main election process dashboard except the e-mail sending process.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>sitemap</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Dynamically generated sitemap.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>robots</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Dynamically generated robots.txt.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>get_json_metadata</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">alt_name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">title</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">description</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">params={}</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">page='home'</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Provide schema.org style JSON-LD metadata.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>metadata_for_home</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">alt_name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">title</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">description</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>JSON-LD metadata for home.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>metadata_for_bulletin</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">alt_name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">title</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">description</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">params</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>JSON-LD metadata for bulletin boards.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>metadata_for_audit</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">alt_name</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">title</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">description</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">params</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>JSON-LD metadata for audit dashboards.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>select_locale_by_force</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Override negotiated locale with the one in URL.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.service.<strong>locale_in_path</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Detect locale specifiec in URL.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>serve_i18n_javacript</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Since Javascript i18n is always painful, just cut the Gordian knot with serving scripts as translatable templates.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.service.<strong>get_app_stats</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">req</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Display some general information about system status at <code>/api/stats</code>.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>read_lines</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">filename</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Read text file into list, if no file, return empty list.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>to_list</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">body</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">key</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Convert request body to list instead of text with newlines.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>datetime_representation</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">dt=None</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Convert datetime into format that Javascript reads with timezone etc.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><em>async </em><code>pseudovote.util.<strong>wait_until</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">stop</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Sleep until next move is needed.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>run_at</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">dt</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">callback</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">*args</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Create coroutine starting at certain moment.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>already_passed</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">stop</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>If the moment has already passed.</p></div>
+</div>
+<div class="autodoc">
+<div class="autodoc-signature"><code>pseudovote.util.<strong>create_choice_html</strong></code><span class="autodoc-punctuation">(</span><em class="autodoc-param">r</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">index</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">classname</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">typename</em><span class="autodoc-punctuation">, </span><em class="autodoc-param">ordered=False</em><span class="autodoc-punctuation">)</span></div>
+<div class="autodoc-docstring"><p>Create HTML for displaying choices on vote collecting web page (in conjunction with <code>templates/collect.js</code>).</p></div>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "header.autohide"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      
+    
+  </body>
+</html>
