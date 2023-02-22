@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime, timedelta
 from pathlib import Path
 
-def read_lines(filename):
+def read_lines(filename, ignore = False):
     """
     Read text file into list, if no file, return empty list.
     """
@@ -12,7 +12,11 @@ def read_lines(filename):
         with open(filename) as f:
             lines = f.read().splitlines()
     else:
-        lines=[]
+        if ignore:
+            lines=[]
+        else:
+            m = f"Can't read '{filename}'. Wrong directory?"
+            raise Exception(m)
     
     return lines
 

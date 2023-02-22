@@ -5,14 +5,15 @@
 
 CREATE USER pseudo;
 ALTER USER pseudo WITH PASSWORD 'default';
-CREATE DATABASE kybaratrikk ENCODING = 'UTF8';
-ALTER DATABASE kybaratrikk OWNER TO postgres;
+CREATE DATABASE pseudovote ENCODING = 'UTF8';
+ALTER DATABASE pseudovote OWNER TO postgres;
+GRANT CONNECT ON DATABASE pseudovote TO pseudo;
+ALTER DATABASE pseudovote SET search_path TO '$user', pseudo;
 
-\connect kybaratrikk;
+\connect pseudovote;
 
 CREATE SCHEMA pseudo;
 ALTER SCHEMA pseudo OWNER TO postgres;
-ALTER DATABASE kybaratrikk SET search_path TO '$user', pseudo;
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA pseudo;
 
@@ -131,7 +132,7 @@ $$;
 ALTER FUNCTION pseudo.suggest_name(name text, size integer, tbl regclass) OWNER TO postgres;
 
 --
--- Name: vote_added_to_bulletin(); Type: FUNCTION; Schema: pseudo; Owner: postgres
+-- Name: vote_before_added_to_bulletin(); Type: FUNCTION; Schema: pseudo; Owner: postgres
 --
 
 CREATE FUNCTION pseudo.vote_before_add_to_bulletin() RETURNS trigger LANGUAGE plpgsql AS
@@ -141,6 +142,12 @@ BEGIN
     RETURN NEW;
 END;
 $$;
+
+ALTER FUNCTION pseudo.vote_before_add_to_bulletin() OWNER TO postgres;
+
+--
+-- Name: vote_added_to_bulletin(); Type: FUNCTION; Schema: pseudo; Owner: postgres
+--
 
 CREATE FUNCTION pseudo.vote_added_to_bulletin() RETURNS trigger LANGUAGE plpgsql AS
 $$
@@ -281,19 +288,13 @@ ALTER TABLE ONLY pseudo.vote ADD CONSTRAINT fk_bulletin FOREIGN KEY (bulletin_id
 ALTER TABLE ONLY pseudo.voterlist ADD CONSTRAINT voterlist_bulletin_id_fkey FOREIGN KEY (bulletin_id) REFERENCES pseudo.bulletin(id);
 
 CREATE TRIGGER bulletin_created AFTER INSERT ON pseudo.bulletin FOR EACH ROW EXECUTE PROCEDURE pseudo.new_bulletin_created();
-
 CREATE TRIGGER vote_before_add BEFORE INSERT ON pseudo.vote FOR EACH ROW EXECUTE PROCEDURE pseudo.vote_before_add_to_bulletin();
-
 CREATE TRIGGER vote_added AFTER INSERT ON pseudo.vote FOR EACH ROW EXECUTE PROCEDURE pseudo.vote_added_to_bulletin();
 
 GRANT USAGE,CREATE ON SCHEMA pseudo TO pseudo;
-GRANT CONNECT ON DATABASE kybaratrikk TO pseudo;
-
 GRANT SELECT,INSERT ON TABLE pseudo.vote TO pseudo;
 GRANT SELECT,INSERT ON TABLE pseudo.voterlist TO pseudo;
 GRANT SELECT,INSERT,UPDATE ON TABLE pseudo.bulletin TO pseudo;
-
 GRANT SELECT,USAGE ON SEQUENCE pseudo.bulletin_id_seq TO pseudo;
 GRANT SELECT,USAGE ON SEQUENCE pseudo.vote_id_seq TO pseudo;
 GRANT SELECT,USAGE ON SEQUENCE pseudo.voterlist_id_seq TO pseudo;
-

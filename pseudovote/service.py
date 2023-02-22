@@ -1347,7 +1347,7 @@ async def startup():
     
     logging.info(f"Bulletin board public key \"{public_key_id}\" and private key \"{private_key_id}\".")
     
-    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host="localhost", database="kybaratrikk", min_size = 2, max_size = 10)
+    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host="localhost", database="pseudovote", min_size = 2, max_size = 10)
     logging.info(f"Connection pool of {app.state.pool.get_size()}/{app.state.pool.get_max_size()} created.")
     app.state.notify_connection = await app.state.pool.acquire()
     await app.state.notify_connection.add_listener(notify_channel, database_listener) # maybe add_termination_listener
@@ -1381,7 +1381,7 @@ starwars = read_lines("wordlists/starwars.txt")
 candidates = read_lines("wordlists/bands_named_after_persons.txt")
 
 public_key = read_lines("keys/gpg-public.txt")
-private_key = read_lines("keys/gpg-private.txt") 
+private_key = read_lines("keys/gpg-private.txt")
 packets = list(AsciiData('\n'.join(public_key).encode('ascii')).packets())
 public_key_id = packets[0].key_id.decode()
 packets = list(AsciiData('\n'.join(private_key).encode('ascii')).packets())
@@ -1471,4 +1471,4 @@ middleware = [
 app = Starlette(on_startup=[startup], on_shutdown=[shutdown], routes=routes, middleware=middleware, debug=True)
 
 if __name__ == "__main__":
-    uvicorn.run("service:app", forwarded_allow_ips="*", log_level="info", reload=True)
+    uvicorn.run("service:app", forwarded_allow_ips="*", uds="pseudovote.sock", log_level="info", reload=True)
