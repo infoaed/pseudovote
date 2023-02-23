@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-autorun"]
+requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
