@@ -1006,6 +1006,9 @@ def conforms_to_choices(ballot, c):
     return res is not None    
     
 def normalize_ballot_text(text):
+    """
+    Currently only replaces newlines with backslashes for better readability in the context of plain text bulletin board.
+    """
     return text.replace('\r\n', '\\').replace('\n', '\\').replace('\r', '\\')
 
 async def process_vote(req):
