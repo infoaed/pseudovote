@@ -1389,7 +1389,7 @@ private_key_id = packets[0].key_id.decode()
 
 notify_channel = 'votes_and_bulletins'
 
-available_locales = next(walk("locales"), ([],[],[]))[1]
+available_locales = [l for l in next(walk("locales"), ([],[],[]))[1] if not l.startswith("__") and not l.endswith("__")]
 
 locale_names = {}
 
