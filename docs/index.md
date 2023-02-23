@@ -1,6 +1,6 @@
 # Introduction
 
-Pseudovote is a voting machine implementing _the simplest process of casting pseudonymous votes on a public bulletin board. Voting takes place in three steps:
+Pseudovote is a voting machine implementing _the simplest process_ of casting pseudonymous votes on a public bulletin board. Voting takes place in three steps:
 
 1. Deliver dedicated pseudonyms to a list of e-mails;
 2. Collect the votes on a public bulletin board;
