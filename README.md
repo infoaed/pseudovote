@@ -1,6 +1,6 @@
 # Pseudovote
 
-Simple voting machine providing privacy preserving yet auditable polls/elections on the Internet. Voting takes place as a three step process making use of e-mail, pseudonymity and public bulletin boards:
+Simple voting machine providing privacy preserving yet auditable polls/elections on the Internet. Making use of e-mail, pseudonymity and public bulletin boards, the voting takes place as a three step process:
 
 1. Deliver dedicated pseudonyms to a list of e-mails;
 2. Collect the votes on a public bulletin board;
