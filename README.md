@@ -6,7 +6,7 @@ Simple voting machine providing privacy preserving yet auditable polls/elections
 2. Collect the votes on a public bulletin board;
 3. Count the result in a reasonably secret ballot.
 
-The voter is provided immediate auditability of the ballot box by sumbitting a pseudonymous ballot on public bulletin board registering/displaying incoming votes from other voters in real time. Ideally pseudonyms should be delivered to voters by a separate service, but for most practical cases and educational use you can trust the web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
+The voter is provided immediate auditability of the ballot box by sumbitting a pseudonymous ballot on a public bulletin board registering/displaying incoming votes from other voters in real time. Ideally pseudonyms should be delivered to voters by a separate service, but for most practical cases and educational use you can trust the web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
 
 Full source code of the service is disclosed according to its [AGPL license](LICENSE) and more details can be found on [documentation pages](https://infoaed.github.io/pseudovote/).
 
