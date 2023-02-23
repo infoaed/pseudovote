@@ -1,6 +1,6 @@
 # Introduction
 
-Pseudovote is a voting machine implementing [the simplest process](https://gafgaf.infoaed.ee/en/posts/pseudonymous-voting-in-wikimedia/#some-preliminary-analysis) of casting pseudonymous votes on a public bulletin board. Voting takes place in three steps:
+Pseudovote is a voting machine implementing _the simplest process of casting pseudonymous votes on a public bulletin board. Voting takes place in three steps:
 
 1. Deliver dedicated pseudonyms to a list of e-mails;
 2. Collect the votes on a public bulletin board;
@@ -8,7 +8,7 @@ Pseudovote is a voting machine implementing [the simplest process](https://gafga
 
 Minimalist setting for [public bulletin board voting](https://s68aa858fd10b80a7.jimcontent.com/download/version/1485167010/module/4933929061/name/beuchat11.pdf) is reinforced by using common tools like e-mail and pseudonyms, but also immediate auditability of submitting your vote to a real time bulletin board, where you can literally see other votes coming in.
 
-Pseudovote moves in opposite direction to complicated voting systems with state of art cryptography, aiming instad to make the process understandable for every participant. Even the web service in its current form is meant as a prototype for testing and educational use, which should be replaced with plain text append only bulletin board for more demanding use cases.
+Pseudovote moves in opposite direction to complicated voting systems with state of art cryptography, aiming instad to [make the process understandable for every participant](https://gafgaf.infoaed.ee/en/posts/pseudonymous-voting-in-wikimedia/#some-preliminary-analysis). Even the web service in its current form is meant as a prototype for testing and educational use, which should be replaced with plain text append only bulletin board for more demanding use cases.
 
 ## In real life
 
