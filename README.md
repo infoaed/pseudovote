@@ -1,6 +1,6 @@
 # Pseudovote
 
-Simple voting machine providing privacy preserving yet auditable polls/elections on the Internet. Making use of e-mail, pseudonymity and public bulletin boards, the voting takes place as a three step process:
+Simple voting machine providing privacy preserving yet auditable polls/elections on the Internet. Making use of e-mail, pseudonymity and public bulletin boards, voting takes place as a three step process:
 
 1. Deliver dedicated pseudonyms to a list of e-mails;
 2. Collect the votes on a public bulletin board;
@@ -34,6 +34,8 @@ uvicorn pseudovote.service:app
 ```
 
 The web service should be running at [localhost:8000](http://localhost:8000).
+
+If you prefer running a container, you get the same result by running `docker compose up` after downloading the source code.
 
 ## Auditable polls on Internet
 

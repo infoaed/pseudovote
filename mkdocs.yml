@@ -31,6 +31,8 @@ markdown_extensions:
     - admonition
     - codehilite
     - mkautodoc
+    - toc:
+        permalink: true
 
 nav:
     - Introduction: index.md
