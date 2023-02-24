@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOSTNAME=db
+    command: uvicorn pseudovote.service:app --host=0.0.0.0 --port=8000
+
+  db:
+    image: postgres:alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+    environment:
+      - POSTGRES_PASSWORD=default
+    healthcheck:
+      test: pg_isready -U pseudo -d pseudovote -t 0
+      interval: 1s
+      retries: 10
+    ports:
+      - 5432:5432
+
+volumes:
+  pg_data:

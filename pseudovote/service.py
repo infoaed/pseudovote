@@ -15,6 +15,7 @@ from starlette.responses import Response, JSONResponse
 from sse_starlette.sse import EventSourceResponse
 
 from os import walk
+from os import getenv
 from babel import Locale
 from asgi_babel import BabelMiddleware, gettext, current_locale, select_locale_by_request, BABEL
 
@@ -1350,7 +1351,7 @@ async def startup():
     
     logging.info(f"Bulletin board public key \"{public_key_id}\" and private key \"{private_key_id}\".")
     
-    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host="localhost", database="pseudovote", min_size = 2, max_size = 10)
+    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host=DB_HOSTNAME, database="pseudovote", min_size = 2, max_size = 10)
     logging.info(f"Connection pool of {app.state.pool.get_size()}/{app.state.pool.get_max_size()} created.")
     app.state.notify_connection = await app.state.pool.acquire()
     await app.state.notify_connection.add_listener(notify_channel, database_listener) # maybe add_termination_listener
@@ -1376,6 +1377,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 random = SystemRandom()
+
+DB_HOSTNAME = getenv("DB_HOSTNAME", "127.0.0.1")
 
 flowers = read_lines("wordlists/flowers.txt")
 islands = read_lines("wordlists/islands.txt")

@@ -16,8 +16,11 @@ keywords = ["voting", "polls", "pseudonyms", "auditability", "bulletin board", "
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Web Environment",
-    "Framework :: AnyIO",
+    "Framework :: AsyncIO",
+    "Framework :: Hatch",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: SQL",
+    "Programming Language :: JavaScript",
     "Operating System :: OS Independent",
     "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Intended Audience :: Education",
@@ -33,7 +36,7 @@ dependencies = [
     "sse-starlette",
     "asyncpg",
     "aiosmtplib",
-    "jinja2 <=3.0.3",
+    "jinja2<=3.0.3",
     "asgi-babel",
     "python-dateutil",
     "python-multipart",
@@ -73,6 +76,7 @@ deploy = [
 all = [
     "hatch run i18n:all",
     "hatch run docs:all",
+    "hatch run deps:all",
 ]
 
 [tool.hatch.envs.i18n.scripts]
@@ -92,6 +96,14 @@ deploy = "mkdocs gh-deploy --force"
 all = [
     "hatch run docs:build",
     "hatch run docs:deploy",
+]
+
+[tool.hatch.envs.deps.scripts]
+run = "hatch dep show requirements > requirements.txt"
+deploy = "hatch dep show requirements -f deploy > requirements-deploy.txt"
+all = [
+    "hatch run deps:run",
+    "hatch run deps:deploy",
 ]
 
 [tool.hatch.build.hooks.custom]

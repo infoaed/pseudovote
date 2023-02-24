@@ -1,13 +1,9 @@
 --
 -- PostgreSQL create database script
--- (in context of versions 11, 13 and 14)
 --
 
-CREATE USER pseudo;
-ALTER USER pseudo WITH PASSWORD 'default';
 CREATE DATABASE pseudovote ENCODING = 'UTF8';
 ALTER DATABASE pseudovote OWNER TO postgres;
-GRANT CONNECT ON DATABASE pseudovote TO pseudo;
 ALTER DATABASE pseudovote SET search_path TO '$user', pseudo;
 
 \connect pseudovote;
@@ -290,6 +286,10 @@ ALTER TABLE ONLY pseudo.voterlist ADD CONSTRAINT voterlist_bulletin_id_fkey FORE
 CREATE TRIGGER bulletin_created AFTER INSERT ON pseudo.bulletin FOR EACH ROW EXECUTE PROCEDURE pseudo.new_bulletin_created();
 CREATE TRIGGER vote_before_add BEFORE INSERT ON pseudo.vote FOR EACH ROW EXECUTE PROCEDURE pseudo.vote_before_add_to_bulletin();
 CREATE TRIGGER vote_added AFTER INSERT ON pseudo.vote FOR EACH ROW EXECUTE PROCEDURE pseudo.vote_added_to_bulletin();
+
+CREATE USER pseudo;
+ALTER USER pseudo WITH PASSWORD 'default';
+GRANT CONNECT ON DATABASE pseudovote TO pseudo;
 
 GRANT USAGE,CREATE ON SCHEMA pseudo TO pseudo;
 GRANT SELECT,INSERT ON TABLE pseudo.vote TO pseudo;
