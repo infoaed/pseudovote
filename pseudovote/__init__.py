@@ -3,7 +3,7 @@ from importlib.util import find_spec
 from datetime import datetime
 from pytz import UTC
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 LASTMODIFIED_UNIXTIME = 0
 
