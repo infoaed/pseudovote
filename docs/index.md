@@ -42,4 +42,4 @@ uvicorn pseudovote.service:app
 
 The web service should be running at [localhost:8000](http://localhost:8000).
 
-If you prefer running a container, you get the same result by running `docker compose up` after downloading the source code.
+If you prefer running a container, you get the same result by executing `docker compose up` after downloading the source code.
