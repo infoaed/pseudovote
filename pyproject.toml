@@ -42,6 +42,7 @@ dependencies = [
     "python-multipart",
     "regex",
     "pgpdump",
+    "python-dotenv",
 ]
 
 dynamic = ["version"]

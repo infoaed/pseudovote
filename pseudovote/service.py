@@ -21,6 +21,7 @@ from asgi_babel import BabelMiddleware, gettext, current_locale, select_locale_b
 
 import json, csv, re, regex, logging
 
+from dotenv import load_dotenv
 import random as pseudo_random
 from random import SystemRandom
 from pgpdump import AsciiData
@@ -371,8 +372,8 @@ async def conduct_voting_process(req, body = None):
                 unique_words = body["words"]
                 wl = "custom"
 
-            url = "localhost"
-            port = 465
+            url = EMAIL_HOST
+            port = EMAIL_PORT
             username = None
             password = None
             
@@ -398,7 +399,7 @@ async def conduct_voting_process(req, body = None):
                 await asyncio.sleep(5)
                 return
             
-            if not dry_run and url == "localhost" and voter_count > EMAIL_LIMIT:
+            if not EMAIL_NOLIMIT and not dry_run and url in LOCALHOSTS and voter_count > EMAIL_LIMIT:
                 data = {"voters": voter_count, 'message': f'Send large amounts (n > {EMAIL_LIMIT}) of e-mails by specifying SMTP server', 'timestamp': datetime_representation()}
                 yield data_state("error", data, initial_token)
                 await asyncio.sleep(5)
@@ -427,7 +428,8 @@ async def conduct_voting_process(req, body = None):
                 if "Bcc" in m:
                     message_ok = False
                     
-                if not message_ok:
+                if not EMAIL_NOLIMIT and not message_ok:
+                    data = {'message': f'Deliver custom ballots with a script like https://github.com/infoaed/uduloor/', 'timestamp': datetime_representation()}
                     yield data_state("error", data, initial_token)
                     await asyncio.sleep(5)
                     return                
@@ -437,7 +439,7 @@ async def conduct_voting_process(req, body = None):
                 t = time()
                 
                 try:
-                    if url != "localhost":
+                    if url not in LOCALHOSTS:
                         if port != 587:
                             server = aiosmtplib.SMTP(url, use_tls=True, port=port, tls_context=ssl.create_default_context()) # use_tls -> port: 465
                             await server.connect()
@@ -447,7 +449,7 @@ async def conduct_voting_process(req, body = None):
                             await server.starttls()
                         await server.login(username, password)
                     else:
-                        server = aiosmtplib.SMTP(url)
+                        server = aiosmtplib.SMTP(url, port=port)
                         await server.connect()
                         
                     logging.info(f"SMTP connected in {time()-t} at {datetime_representation()}")
@@ -508,18 +510,18 @@ async def conduct_voting_process(req, body = None):
             # saadab igale hääletajale segatud nimekirjas ühe pseudonüümi
             for i in range(voter_count):
                 
-                if mailcount == MAIL_CHUNK_SIZE:
+                if mailcount == EMAIL_CHUNK:
                     
                     t = time()
                     
-                    # meiliserveritel on sageli smtp_accept_queue_per_connection limiit kuni 10                   
+                    # meiliserveritel on sageli smtp_accept_queue_per_connection limiit kuni 10
                     try:
                         mailcount = 0
                         await server.quit()
                         
                         await asyncio.sleep(3)
                         
-                        if url != "localhost":
+                        if url not in LOCALHOSTS:
                             if port != 587:
                                 server = aiosmtplib.SMTP(url, use_tls=True, port=port, tls_context=ssl.create_default_context()) # use_tls -> port: 465
                                 await server.connect()
@@ -529,7 +531,7 @@ async def conduct_voting_process(req, body = None):
                                 await server.starttls()
                             await server.login(username, password)
                         else:
-                            server = aiosmtplib.SMTP(url)
+                            server = aiosmtplib.SMTP(url, port=port)
                             await server.connect()
                             
                         logging.info(f"SMTP connected in {time()-t} at {datetime_representation()}")
@@ -1351,11 +1353,12 @@ async def startup():
     
     logging.info(f"Bulletin board public key \"{public_key_id}\" and private key \"{private_key_id}\".")
     
-    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host=DB_HOSTNAME, database="pseudovote", min_size = 2, max_size = 10)
+    app.state.pool = await asyncpg.create_pool(user="pseudo", password="default", host=DB_HOST, database="pseudovote", min_size = 2, max_size = 10)
     logging.info(f"Connection pool of {app.state.pool.get_size()}/{app.state.pool.get_max_size()} created.")
     app.state.notify_connection = await app.state.pool.acquire()
     await app.state.notify_connection.add_listener(notify_channel, database_listener) # maybe add_termination_listener
     logging.info(f"Connected to notify channel \"{notify_channel}\".")
+    logging.info(f"Expecting SMTP server at \"{EMAIL_HOST}:{EMAIL_PORT}\".")
     
 async def shutdown():
     """
@@ -1378,7 +1381,19 @@ logger.setLevel(logging.INFO)
 
 random = SystemRandom()
 
-DB_HOSTNAME = getenv("DB_HOSTNAME", "127.0.0.1")
+load_dotenv()
+
+DB_HOST = getenv("DB_HOST", "localhost")
+LOCALHOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+
+EMAIL_PORT = int(getenv("EMAIL_PORT", "25"))
+EMAIL_HOST = getenv("EMAIL_HOST", "localhost")
+EMAIL_USERNAME = getenv("EMAIL_USERNAME", "pseudo")
+EMAIL_PASSWORD = getenv("EMAIL_PASSWORD", "default")
+
+EMAIL_NOLIMIT = bool(getenv("EMAIL_NOLIMIT", "false").lower()[0] not in ("f", "0"))
+EMAIL_LIMIT = int(getenv("EMAIL_LIMIT", "101"))
+EMAIL_CHUNK = int(getenv("EMAIL_CHUNK", "10"))
 
 flowers = read_lines("wordlists/flowers.txt")
 islands = read_lines("wordlists/islands.txt")

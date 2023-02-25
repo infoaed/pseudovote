@@ -4,6 +4,7 @@ asyncpg
 jinja2<=3.0.3
 pgpdump
 python-dateutil
+python-dotenv
 python-multipart
 regex
 sse-starlette
