@@ -1384,7 +1384,7 @@ random = SystemRandom()
 load_dotenv()
 
 DB_HOST = getenv("DB_HOST", "localhost")
-LOCALHOSTS = ["localhost", "127.0.0.1", "0.0.0.0"]
+LOCALHOSTS = ["mail", "localhost", "127.0.0.1", "0.0.0.0"]
 
 EMAIL_PORT = int(getenv("EMAIL_PORT", "25"))
 EMAIL_HOST = getenv("EMAIL_HOST", "localhost")
