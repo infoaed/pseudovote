@@ -8,7 +8,7 @@ Simple voting machine providing privacy preserving yet auditable polls/elections
 
 The voter is provided immediate auditability of the ballot box by submitting a pseudonymous ballot on a public bulletin board registering/displaying incoming votes from other voters in real time. Ideally pseudonyms should be delivered to voters by a separate service, but for most practical cases and educational use you can trust the web service at [Pseudovote.net](https://pseudovote.net/) to deliver them for you.
 
-Pseudovote implements a variation of "more sophisticated" protocol from "[End-end-verifiability](https://arxiv.org/abs/1504.03778)" by Benaloh et al (2015). Full source code of the service is disclosed according to its [AGPL license](LICENSE) and more details can be found on [documentation pages](https://infoaed.github.io/pseudovote/).
+Pseudovote implements a variation of a "more sophisticated" protocol from "[End-end-verifiability](https://arxiv.org/abs/1504.03778)" by Benaloh et al (2015). Full source code of the service is disclosed according to its [AGPL license](LICENSE) and more details can be found on [documentation pages](https://infoaed.github.io/pseudovote/).
 
 ## Running your own
 
@@ -45,6 +45,8 @@ You will be told there is proof, but you have to know mathematics. After researc
 
 Pseudovote helps to take the opposite route, building on e-mail and pseudonyms -- well known tools already from the early days of Internet. Collecting pseudonymous ballots on a public bulletin board is an addition you might still need to get used to. But it is probably closest you get to collecting pieces of paper in a transparent ballot box.
 
+By providing only a core [end-to-end auditable process](https://en.wikipedia.org/wiki/End-to-end_auditable_voting_systems), the voting commission has to work out trust assumptions specific to a particular vote.
+
 Oldest and most experienced online communities tend to conduct their elections in a similar manner.
 
 There is [a write-up](https://gafgaf.infoaed.ee/en/posts/pseudonymous-voting-in-wikimedia/) explaining the historical context of the project and [slides from a 2020 presentation](https://p6drad-teel.net/~p6der/pseudovote-2020.pdf) for a local computer security crowd.
@@ -56,4 +58,4 @@ Preliminary forms of Pseudovote have been used at:
 * [Wikimedia Estonia General Assembly](https://wikimedia.ee/haaleta-nagu-vikipedist/) (2020)
 * [Estonian Green Party General Assembly](https://www.facebook.com/rohelised/posts/325701606250799) (2022)
 
-Initial experiments have indeed resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).
+Initial experiments have _indeed_ resulted in an educational yet fully functional web service demonstrating the process conceived at [Uduloor](https://github.com/infoaed/uduloor).
