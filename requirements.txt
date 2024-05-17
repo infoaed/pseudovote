@@ -10,3 +10,4 @@ regex
 sse-starlette
 starlette
 uvicorn
+pytz
